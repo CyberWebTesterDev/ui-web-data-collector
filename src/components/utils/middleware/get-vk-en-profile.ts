@@ -8,7 +8,7 @@ import { hideSpinner, showSpinner } from "../../../actions/actions";
 
 type TAction = {
   type: string;
-  payload?: any;
+  payload?: string;
 };
 // middleware для асинхронного запроса на получение данных по профайлу через VK API
 export const getVKProfileById = () => (dispatch: (action: TAction) => void) => (
