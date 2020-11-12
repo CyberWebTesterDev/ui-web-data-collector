@@ -1,0 +1,53 @@
+.control-panel-container {
+  position: absolute;
+  left: 50%;
+  width: 500px;
+  height: 100px;
+  background-color: #4e5358;
+  display: table;
+  border: solid;
+  border-width: thin;
+  justify-content: center;
+}
+
+.label-control {
+  text-align: center;
+}
+
+.button-container {
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  margin-left: 10px;
+  text-align: center;
+  left: 10%;
+  margin-bottom: 15px;
+}
+.controller-button-block {
+  margin: 5px;
+}
+
+.select-container {
+  position: relative;
+  word-wrap: break-word;
+}
+
+.select-block {
+  margin: 5px;
+  position: relative;
+  display: inline-flex;
+}
+
+.select-block-child {
+  margin-bottom: 10px;
+  position: relative;
+  margin-left: 5px;
+}
+
+.label-select {
+  margin-left: 5px;
+}
+
+.code-container {
+  font-size: 25px;
+}

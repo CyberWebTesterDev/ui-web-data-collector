@@ -1,0 +1,56 @@
+.menu-form-container > button {
+  margin-left: 10px;
+  position: relative;
+}
+
+.menu-form-container > input {
+  margin-left: 10px;
+  position: relative;
+}
+
+.menu-main-container {
+  width: max-content;
+  background-color: grey;
+  color: black;
+  padding-left: 10px;
+  margin-left: 5px;
+  padding-top: 10px;
+  height: max-content;
+}
+
+.articles-parent-wrapper {
+  font-size: 25px;
+}
+
+.article-child-wrapper {
+  font-size: 20px;
+  position: relative;
+  padding-left: 20px;
+  display: grid;
+}
+
+.menu-header {
+  margin-bottom: 10px;
+}
+
+.article-next-child-wrapper {
+  position: relative;
+  padding-left: 25px;
+  display: grid;
+}
+
+.articles-main-wrapper {
+  display: flex;
+}
+
+.main-article-container {
+  position: relative;
+}
+
+.space-label {
+  margin-bottom: 25px;
+  font-size: 25px;
+  font-family: "Segoe UI Semibold";
+  background-color: #88a4b7;
+  width: max-content;
+}

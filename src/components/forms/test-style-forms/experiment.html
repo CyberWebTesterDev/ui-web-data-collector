@@ -1,0 +1,200 @@
+<div class="page_block">
+    <div id="page_info_wrap" class="page_info_wrap "><div class="page_top">
+        <div class="_profile_online profile_online"><div class="profile_online_lv">заходил три часа назад</div> </div>
+        <h1 class="page_name">Альберт  Суханов</h1>
+        <div class="page_current_info" id="page_current_info"><div id="currinfo_editor" class="page_status_editor clear" onclick="cancelEvent(event)">
+            <div class="editor">
+                <div class="page_status_input_wrap _emoji_field_wrap">
+                    <div class="emoji_smile_wrap  _emoji_wrap">
+                        <div class="emoji_smile _emoji_btn" title="Используйте TAB, чтобы быстрее открывать смайлы" onmouseover="return Emoji.show(this, event);" onmouseout="return Emoji.hide(this, event);" onclick="return cancelEvent(event);">
+                            <div class="emoji_smile_icon"></div>
+                        </div>
+                    </div>
+                    <div class="page_status_input" id="currinfo_input" role="textbox" contenteditable="true"></div>
+                </div>
+                <div class="page_status_audio checkbox" id="currinfo_audio" onclick="checkbox(this); Page.audioStatusUpdate('7f227ac41fce78b7e9');" role="checkbox" aria-checked="false" tabindex="0">Транслировать музыку в статус</div>
+                <div class="page_status_app checkbox on unshown" id="currinfo_app" onclick="checkbox(this); Profile.appStatusUpdate('7f227ac41fce78b7e9')" role="checkbox" aria-checked="true" tabindex="0">Показывать приложение в статусе</div>
+                <button class="flat_button button_small page_status_btn_save" id="currinfo_save">Сохранить</button>
+            </div>
+        </div>
+            <div id="currinfo_wrap" onclick="return Page.infoEdit();" tabindex="0" role="button">
+                <span id="current_info" class="current_info"><span class="no_current_info">изменить статус</span></span>
+            </div>
+            <div id="currinfo_fake" style="display: none"><span class="no_current_info">изменить статус</span></div></div>
+    </div><div class="profile_info profile_info_short" id="profile_short">
+        <div class="clear_fix profile_info_row ">
+            <div class="label fl_l">День рождения:</div>
+            <div class="labeled"><a href="/search?c[section]=people&amp;c[bday]=5&amp;c[bmonth]=9">5 сентября</a> <a href="/search?c[section]=people&amp;c[byear]=1989">1989 г.</a></div>
+        </div><div class="clear_fix profile_info_row ">
+        <div class="label fl_l">Город:</div>
+        <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[country]=1&amp;c[city]=1161146">Иловля</a></div>
+    </div><div class="clear_fix profile_info_row ">
+        <div class="label fl_l">Образование:</div>
+        <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2">МГУ</a><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[uni_year]=0"> '03</a></div>
+    </div><div class="profile_more_info">
+        <a class="profile_more_info_link" onclick="Profile.toggleInfo(this)">
+            <span class="profile_label_more">Показать подробную информацию</span>
+            <span class="profile_label_less">Скрыть подробную информацию</span>
+        </a>
+    </div>
+    </div>
+        <div class="profile_info profile_info_full" id="profile_full" style="display: none;">
+            <div class="profile_info_block clear_fix">
+                <div class="profile_info_header_wrap">
+                    <a class="profile_info_edit" href="/edit">Редактировать</a>
+                    <span class="profile_info_header">Основная информация</span>
+                </div>
+                <div class="profile_info">
+                    <div class="clear_fix profile_info_row ">
+                        <div class="label fl_l">Родной город:</div>
+                        <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[hometown]=%D0%9A%D1%83%D1%80%D1%82%D0%B0%D0%BC%D1%8B%D1%88">Куртамыш</a></div>
+                    </div><div class="clear_fix profile_info_row ">
+                    <div class="label fl_l">Языки:</div>
+                    <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[lang]=-1">Русский</a></div>
+                </div>
+                </div>
+            </div><div class="profile_info_block clear_fix">
+            <div class="profile_info_header_wrap">
+                <a class="profile_info_edit" href="/edit?act=contacts">Редактировать</a>
+                <span class="profile_info_header">Контактная информация</span>
+            </div>
+            <div class="profile_info">
+                <div class="clear_fix profile_info_row ">
+                    <div class="label fl_l">Моб. телефон:</div>
+                    <div class="labeled">мобильный телефон</div>
+                </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Доп. телефон:</div>
+                <div class="labeled">дополнительный телефон</div>
+            </div>
+            </div>
+        </div><div class="profile_info_block clear_fix">
+            <div class="profile_info_header_wrap">
+                <a class="profile_info_edit" href="/edit?act=education">Редактировать</a>
+                <span class="profile_info_header">Образование</span>
+            </div>
+            <div class="profile_info">
+                <div class="clear_fix profile_info_row block">
+                    <div class="label fl_l">Вуз:</div>
+                    <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574">КубГУ</a><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574&amp;c[uni_year]=2010"> '10</a></div>
+                </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Факультет:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574&amp;c[faculty]=9427">Факультет химии и высоких технологий</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Специальность:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574&amp;c[faculty]=9427&amp;c[chair]=53680"> Кафедра общей, неорганической химии и информационно-вычислительных технологий в химии</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Форма обучения:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574&amp;c[edu_form]=3">Заочное отделение</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Статус:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=72&amp;c[university]=574&amp;c[edu_status]=10">Доктор наук</a></div>
+            </div><div class="clear_fix profile_info_row block">
+                <div class="label fl_l">Вуз:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269">НИЯУ МИФИ</a><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269&amp;c[uni_year]=2005"> '05</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Факультет:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269&amp;c[faculty]=1173">Факультет кибернетики и информационной безопасности (КиБ)</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Специальность:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269&amp;c[faculty]=1173&amp;c[chair]=2143">Кафедра системного анализа (№ 28)</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Форма обучения:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269&amp;c[edu_form]=3">Заочное отделение</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Статус:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=269&amp;c[edu_status]=10">Доктор наук</a></div>
+            </div><div class="clear_fix profile_info_row block">
+                <div class="label fl_l">Вуз:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304">НИУ МЭИ</a><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304&amp;c[uni_year]=2007"> '07</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Факультет:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304&amp;c[faculty]=1327">Институт радиотехники и электроники им. В. А. Котельникова</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Специальность:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304&amp;c[faculty]=1327&amp;c[chair]=1808234"> Кафедра полупроводниковой электроники</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Форма обучения:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304&amp;c[edu_form]=3">Заочное отделение</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Статус:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=304&amp;c[edu_status]=10">Доктор наук</a></div>
+            </div><div class="clear_fix profile_info_row block">
+                <div class="label fl_l">Вуз:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2">МГУ</a><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[uni_year]=2003"> '03</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Факультет:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[faculty]=20">Факультет биоинженерии и биоинформатики</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Специальность:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[faculty]=20&amp;c[chair]=11767">Биоинженерия и биоинформатика</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Форма обучения:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[edu_form]=3">Заочное отделение</a></div>
+            </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Статус:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[uni_country]=1&amp;c[uni_city]=1&amp;c[university]=2&amp;c[edu_status]=10">Доктор наук</a></div>
+            </div><div class="clear_fix profile_info_row block">
+                <div class="label fl_l">Школа:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[school_country]=1&amp;c[school_city]=1707&amp;c[school]=530173">Школа № 1</a><br>Россошь</div>
+            </div>
+            </div>
+        </div><div class="profile_info_block clear_fix">
+            <div class="profile_info_header_wrap">
+                <a class="profile_info_edit" href="/edit?act=military">Редактировать</a>
+                <span class="profile_info_header">Военная служба</span>
+            </div>
+            <div class="profile_info">
+                <div class="clear_fix profile_info_row ">
+                    <div class="label fl_l">Войсковая часть:</div>
+                    <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[mil_country]=1&amp;c[mil_unit]=9754395">РХБЗ. младший офицерский состав</a><br>Россия, в 2004 г.</div>
+                </div>
+            </div>
+        </div><div class="profile_info_block clear_fix">
+            <div class="profile_info_header_wrap">
+                <a class="profile_info_edit" href="/edit?act=personal">Редактировать</a>
+                <span class="profile_info_header">Жизненная позиция</span>
+            </div>
+            <div class="profile_info">
+                <div class="clear_fix profile_info_row ">
+                    <div class="label fl_l">Полит. предпочтения:</div>
+                    <div class="labeled">Умеренные</div>
+                </div><div class="clear_fix profile_info_row ">
+                <div class="label fl_l">Мировоззрение:</div>
+                <div class="labeled"><a href="/search?c[name]=0&amp;c[section]=people&amp;c[religion]=Своеобразные">Своеобразные</a></div>
+            </div>
+            </div>
+        </div><div class="profile_info_block clear_fix">
+            <div class="profile_info_header_wrap">
+                <a class="profile_info_edit" href="/edit?act=interests">Редактировать</a>
+                <span class="profile_info_header">Личная информация</span>
+            </div>
+            <div class="profile_info">
+                <div class="clear_fix profile_info_row ">
+                    <div class="label fl_l"><a href="/groups?id=3436314" class="profile_label_link" onclick="return nav.go(this, event, {noback: false})">Группы:</a></div>
+                    <div class="labeled"><a href="/zzprn">KAMASTETICA</a>, <a href="/homeporno1">SEX PORNO HOME</a>, <a href="/club29058244">WeBCaM Club Девушки снимают себя на камеру</a>, <a href="/ero_models_twistys">TWISTYS 18</a>, <a href="/pornbezrelkami">R U K O E B</a>, <a href="/zrelki_ru">Зрелки Mature Зрелые</a>, <a href="/asiangel">Erotic Asian Angel Эротичные азиатские ангелы</a>, <a href="/hairypussys">Волосатые киски 21 Hairy Pussy</a>, <a href="/pornmilf">Mature milf granny</a>, <a href="/znakomstva_xxxx">Секс знакомства Москва</a>, <a href="/cameradoma">Женский онанизм Скрытые камеры</a>, <a href="/club64308187">Домашнее порно</a>, <a href="/club79598541">тычинки и пестики</a>, <a href="/lovesex">порно 126</a>, <a href="/socialanxietyold">Социальная фобия Социофобы Социофобия</a></div>
+                </div><a class="noselect" id="profile_groups_link" href="/groups?id=3436314" onmouseover="ajax.post('al_profile.php', {act: 'groups', id: cur.oid}, {cache: 1})" onclick="return Profile.showGroups(event)">
+                показать полный список
+            </a>
+                <div class="clear_fix miniblock" style="display: none">
+                    <div class="label fl_l">&nbsp;</div>
+                    <div class="labeled" id="profile_all_groups"></div>
+                </div>
+            </div>
+        </div>
+        </div></div><div class="counts_module"><a class="page_counter" href="/friends?id=3436314&amp;section=all" onclick="return page.showPageMembers(event, 3436314, 'friends');">
+    <div class="count">4</div>
+    <div class="label">друга</div>
+</a><a class="page_counter" onclick="return page.showPageMembers(event, 3436314, 'fans');">
+    <div class="count">142</div>
+    <div class="label">подписчика</div>
+</a><a class="page_counter" href="/albums3436314?profile=1" onclick="return showAlbums(3436314, {noHistory: true}, event);">
+    <div class="count">176</div>
+    <div class="label">фотографий</div>
+</a><a class="page_counter" href="/videos3436314" onclick="return page.showPageVideos(event, 3436314)">
+    <div class="count">590</div>
+    <div class="label">видеозаписей</div>
+</a><a class="page_counter" href="/audios3436314" onclick="return page.showPageAudios(event, 3436314);">
+    <div class="count">462</div>
+    <div class="label">аудиозаписи</div>
+</a></div>
+</div>

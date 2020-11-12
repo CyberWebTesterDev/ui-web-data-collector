@@ -1,0 +1,72 @@
+.test-block-details {
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.test-block-details span {
+  display: flex;
+  font-size: 25px;
+  margin-left: 10px;
+}
+.test-block-details font {
+  color: darkorange;
+  margin-right: 10px;
+}
+
+.test-block {
+  margin-left: 20px;
+  margin-top: 50px;
+  padding: 10px;
+}
+
+.test-block button {
+  padding: 5px;
+  margin: 20px;
+}
+
+.modal-test {
+  display: flex !important;
+}
+
+.visible-block {
+  display: block !important;
+  visibility: visible !important;
+}
+
+.dimmer {
+  background-color: rgba(19, 18, 18, 0.85);
+  transition: background-color 0.5s linear;
+  user-select: none;
+  min-width: 1300px;
+}
+
+.modal-test-parent {
+  top: 0 !important;
+  position: fixed;
+  visibility: visible !important;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 1em;
+  z-index: 1000;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.modal {
+  background-color: lightslategray;
+  top: 50%;
+  bottom: 50%;
+  width: 500px;
+  left: 30%;
+  right: 70%;
+  height: 100px;
+  position: relative;
+  z-index: 1001;
+  box-shadow: 1px 3px 3px;
+  border-radius: 0.28571429rem;
+  will-change: top, left, margin, transform, opacity;
+  border: black;
+  user-select: text;
+}

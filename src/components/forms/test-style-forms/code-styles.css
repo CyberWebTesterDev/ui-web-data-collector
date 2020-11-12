@@ -1,0 +1,96 @@
+.code-javascript {
+  margin: 20px;
+  background-color: #232527;
+  width: 800px;
+  font-family: monospace;
+}
+
+.key-comment {
+  color: #a18686;
+}
+
+.key-declare {
+  color: #00a379;
+}
+
+.key-variable-declare {
+  color: cyan;
+}
+
+.key-return {
+  color: #bf2718;
+}
+
+.key-main-words {
+  color: #1d6fa5;
+}
+
+.variables {
+  color: #69c2fc;
+}
+
+.key-bool {
+  color: #fab039;
+}
+
+.key-functions {
+  color: #ff7f40;
+}
+
+.key-methods {
+  color: deepskyblue;
+}
+
+.key-equal {
+  color: #ff5d4a;
+}
+
+.key-global-objects {
+  color: #ffa314;
+}
+
+.article-code {
+  position: relative;
+  left: 2%;
+  margin-bottom: 100px;
+  padding: 15px;
+  width: 1500px;
+  word-wrap: break-word;
+}
+
+.first-level-header {
+  font-size: 35px;
+  margin-bottom: 50px;
+  color: #d31677;
+  font-weight: bold;
+}
+
+.second-level-header {
+  font-size: 30px;
+  margin-bottom: 50px;
+  color: #d5600b;
+  font-weight: bold;
+}
+
+.detailed-specific-text {
+  color: #00bc8c;
+  font-family: monospace;
+}
+
+.detailed-plain-text {
+  font-style: italic;
+  color: #e6a756;
+}
+
+.list-italic {
+  font-style: italic;
+  color: darkseagreen;
+}
+
+.code-detailed-plain-text {
+  background-color: black;
+  font-family: monospace;
+}
+.colored-plain-text {
+  color: #00bc8c;
+}
