@@ -1,0 +1,103 @@
+.dimmer-modal {
+    background-color: rgba(19, 18, 18, 0.85);
+    transition: background-color .5s linear;
+    user-select: none;
+}
+
+.visible-block {
+    display: block !important;
+    visibility: visible !important;
+}
+
+.modal {
+    background-color: lightslategray;
+    top: 50%;
+    bottom: 50%;
+    width: 500px;
+    left: 30%;
+    right: 70%;
+    height: 100px;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 1px 3px 3px;
+    border-radius: .28571429rem;
+    will-change: top,left,margin,transform,opacity;
+    border: black;
+    user-select: text;
+}
+
+.modal-parent-large {
+    top: 0 !important;
+    bottom: 10px;
+    position: fixed;
+    visibility: visible !important;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 1em;
+    z-index: 1000;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.modal-dark-gray-large {
+    background-color: rgb(47, 53, 58);
+    top: 25px;
+    bottom: 5px;
+    width: 700px;
+    left: 30%;
+    right: 60%;
+    height: 500px;
+    padding: 5px;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 1px 3px 3px;
+    border-radius: .28571429rem;
+    will-change: top,left,margin,transform,opacity;
+    border: black;
+    user-select: text;
+}
+
+.modal-post-dark-gray-large {
+    background-color: rgb(47, 53, 58);
+    top: 25px;
+    bottom: 5px;
+    width: 1500px;
+    left: 200px;
+    height: 800px;
+    padding: 5px;
+    padding-left: 10px;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 1px 3px 3px;
+    border-radius: .28571429rem;
+    will-change: top,left,margin,transform,opacity;
+    border: black;
+    user-select: text;
+    overflow: auto;
+}
+
+.text-modal {
+    font-size: 18px;
+}
+
+.text-modal-large {
+    font-size: 25px;
+    text-align: left;
+    white-space: pre-wrap;
+    color: bisque;
+}
+
+.modal-label {
+    display: block;
+    color: #00a379;
+    font-size: 30px;
+}
+.modal-second-label {
+    color: #8a95a1;
+}
+
+.modal-btn {
+    position: relative;
+    top: 205px;
+}
