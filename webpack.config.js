@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
+//test
 module.exports = {
   //для того чтобы не было ошибки при использовании Router при перезагрузки страницы
   entry: "./src/index.js",

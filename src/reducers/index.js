@@ -15,22 +15,4 @@ const mainReducer = combineReducers({
   profileEnrichmentData: vkEnrichmentProfileReducer
 });
 
-//     (state, action) => {
-//
-//     //console.log(state);
-//     // const newState = {
-//     //     vkData: reducerVK(state, action)
-//     // }
-//
-//     // console.log(`Main reducer`+'\n')
-//     // console.log(newState);
-//     // return newState;
-//
-//
-//     return {
-//         vkData: reducerVK(state, action)
-//     }
-//
-// }
-//
 export default mainReducer;
