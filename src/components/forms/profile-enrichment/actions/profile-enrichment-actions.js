@@ -37,12 +37,20 @@ export const getVKENLocalStorageData = (payload) => {
     payload,
   };
 };
-export const getVKENDBProfileData = (payload) => {
+export const getVKENDBProfileData = (id) => {
   return {
-    type: "GET_VK_EN_DB_EXTENDED_PROFILE_DATA",
+    type: "GET_VK_EN_DB_PROFILE_DATA",
+    payload: id,
+  };
+};
+
+export const getVKENDBProfileDataEndSuccess = (payload) => {
+  return {
+    type: "GET_VK_EN_DB_PROFILE_DATA_SUCCESS",
     payload,
   };
 };
+
 export const getVKENDBExtendedProfileData = (payload) => {
   return {
     type: "GET_VK_EN_DB_EXTENDED_PROFILE_DATA",

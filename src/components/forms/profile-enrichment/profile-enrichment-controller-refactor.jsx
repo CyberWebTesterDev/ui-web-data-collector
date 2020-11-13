@@ -6,6 +6,7 @@ import { getVKProfileById } from "../../utils/middleware/get-vk-en-profile";
 import RowPresentationContainer from "../containers/row-presentation-container";
 import ProfilePropsEnrichment from "../lists/profile-props-enrichment";
 import { VkProfileBlockPresentationCompareContainer } from "../styled-forms/vk-forms/vk-profile-data-presentation-container";
+import { VKInformationPanel } from "./VKInformationPanel";
 
 class ProfileEnrichmentControllerRx extends Component {
   async componentDidMount() {
@@ -13,14 +14,12 @@ class ProfileEnrichmentControllerRx extends Component {
       `ProfileEnrichmentControllerRx: mounted with props from store: `
     );
     console.log(this.props);
-    const { fetchVKEnrichmentProfile, stopLoad } = this.props;
+    const { fetchVKEnrichmentProfile, getVKENDBProfileData } = this.props;
     const profileId = this.props.match.params.id;
     if (profileId) {
       fetchVKEnrichmentProfile(profileId);
+      getVKENDBProfileData(profileId);
     }
-    // setTimeout(() => {
-    //     stopLoad();
-    // }, 3000);
   }
 
   componentDidUpdate() {
@@ -31,13 +30,16 @@ class ProfileEnrichmentControllerRx extends Component {
   }
 
   render() {
-    const { loading, profile } = this.props.profileEnrichmentData;
+    const { loading, profile, profileInDB } = this.props.profileEnrichmentData;
     return loading ? (
       <div>Content is loading...</div>
     ) : isEmpty(profile) ? (
       <div>Profile is empty</div>
     ) : (
-      <VkProfileBlockPresentationCompareContainer profile={profile} />
+      <React.Fragment>
+        <VKInformationPanel profileInDB={profileInDB} />
+        <VkProfileBlockPresentationCompareContainer profile={profile} />
+      </React.Fragment>
     );
   }
 }
