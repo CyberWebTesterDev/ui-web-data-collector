@@ -15,5 +15,3 @@ export const VKInformationPanel = ({ profileInDB }) => {
 const InformationBlock = ({ optionalComment = "" }) => {
   return <div className={"profile-info-label"}>{optionalComment}</div>;
 };
-
-const a = 1;
