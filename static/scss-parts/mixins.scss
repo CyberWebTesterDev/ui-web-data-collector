@@ -1,0 +1,49 @@
+@import "variables";
+
+@mixin mainProfileInfoLabel () {
+  font-size: 25px;
+  background-color: $backGroundClrInfo;
+  left: 12%;
+  position: relative;
+  max-width: $maxWidth500px;
+  width: max-content;
+}
+
+@mixin grid($cols, $margin) {
+  float: left;
+  background-color: $backGroundClrTest;
+  margin-right: $margin;
+  margin-bottom: $margin;
+  height: 150px;
+  width: ((100% - (($cols - 1) * $margin)) / $cols );
+
+  &:nth-child(#{$cols}n) {
+    margin-right: 0;
+  }
+}
+//container-blocks
+@mixin containerBlocks() {
+    display: table;
+    text-align: center;
+    width: 700px;
+    padding: 35px 20px 25px;
+    height: 500px;
+    margin: 15px;
+    background-color: #3a4b4b;
+}
+//container-blocks__image
+
+//container-blocks__prop-block
+
+@mixin childPropertyBlock() {
+  text-align: left;
+  padding: 5px;
+  background-color: #015454;
+  display: flex;
+  height: 50px;
+  border: 1px solid;
+}
+//modifiers
+@mixin setPropValue($propertyName, $value) {
+  #{$propertyName}: $value;
+}

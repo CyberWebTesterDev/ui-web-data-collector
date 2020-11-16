@@ -1,0 +1,24 @@
+//comment
+@import "static/scss-parts/variables";
+@import "static/scss-parts/mixins";
+
+.background-test {
+  background-color: $backGroundClrTest;
+}
+
+.maxWidth500px {
+  max-width: $maxWidth500px;
+}
+
+.profile-info-label {
+  @include mainProfileInfoLabel();
+}
+
+.prx_v_k_information_panel_block__information_property {
+  @include mainProfileInfoLabel()
+}
+
+.red-border-mod {
+  @include setPropValue(border-color, red);
+  @include setPropValue(border-style, solid);
+}

@@ -20,7 +20,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jpe?g|gif|ico)$/,
+        test: /\.(png|jpe?g|gif|ico|ttf|svg|woff2|eot|woff)$/,
         use: [
           {
             loader: "file-loader",
@@ -41,7 +41,6 @@ module.exports = {
         use: [{ loader: "style-loader" }, { loader: "css-loader" }],
       },
       {
-        test: /\.(s[ca]ss)$/,
         test: /\.(s[ca]ss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
