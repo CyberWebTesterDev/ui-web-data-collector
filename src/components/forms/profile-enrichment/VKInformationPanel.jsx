@@ -1,7 +1,7 @@
 import React from "react";
-import { has, get } from "lodash";
+import { has } from "lodash";
 import { getBEMClassName } from "../../utils/bem-helper";
-import { Grid, Segment } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 export const VKInformationPanel = ({ profileInDB }) => {
   if (has(profileInDB, "hasProfileCheckRow")) {
