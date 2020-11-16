@@ -16,16 +16,17 @@ export const VKInformationPanel = ({ profileInDB }) => {
 
 const InformationProperty = ({ optionalComment = "" }) => {
   return (
-    <div className={getBEMClassName('InformationProperty')}>
-      <Grid columns={2} stackable padded>
+    <div className={getBEMClassName("InformationProperty")}>
+      <Grid columns={5} stackable padded>
         <Grid.Row>
           <Grid.Column>
-            <div>Наличие в БД</div>
+            <div style={{color: 'cyan'}}>Наличие в БД</div>
           </Grid.Column>
-        </Grid.Row>
-        <Grid.Row>
+          <Grid.Column color={'green'}>
+            <div>{optionalComment}</div>
+          </Grid.Column>
           <Grid.Column>
-            <div>Вторая опция</div>
+            <div>Тест2</div>
           </Grid.Column>
         </Grid.Row>
       </Grid>
