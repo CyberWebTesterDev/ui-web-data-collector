@@ -49,7 +49,7 @@ class VKenControlPanelController extends React.Component {
               onChange={() =>
                 updateFormValue({
                   fieldName,
-                  fieldValue: this.selectFieldValueByName(fieldName),
+                  fieldValue: !this.selectFieldValueByName(fieldName),
                 })
               }
             />
