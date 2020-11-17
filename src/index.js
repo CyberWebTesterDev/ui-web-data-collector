@@ -11,6 +11,9 @@ import 'semantic-ui-css/components/table.css';
 import 'semantic-ui-css/components/icon.css';
 import 'semantic-ui-css/components/menu.css';
 import 'semantic-ui-css/components/rating.css';
+import 'semantic-ui-css/components/dropdown.css';
+import 'semantic-ui-css/components/button.css';
+import 'semantic-ui-css/components/checkbox.css';
 import App from "../src/components/app/app";
 import { BrowserRouter as Router } from "react-router-dom";
 import store from "./store";
@@ -34,3 +37,7 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
+
+if (process.env.NODE_ENV === 'development') {
+    window.getState = store.getState;
+}

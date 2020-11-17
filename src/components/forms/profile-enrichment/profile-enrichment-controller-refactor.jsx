@@ -7,6 +7,7 @@ import RowPresentationContainer from "../containers/row-presentation-container";
 import ProfilePropsEnrichment from "../lists/profile-props-enrichment";
 import { VkProfileBlockPresentationCompareContainer } from "../styled-forms/vk-forms/vk-profile-data-presentation-container";
 import { VKInformationPanel } from "./VKInformationPanel";
+import { VKenControlPanel } from "./vk-en-control-panel";
 
 class ProfileEnrichmentControllerRx extends Component {
   async componentDidMount() {
@@ -31,13 +32,14 @@ class ProfileEnrichmentControllerRx extends Component {
 
   render() {
     const { loading, profile, profileInDB } = this.props.profileEnrichmentData;
+    const { profileControlOptions } = this.props.profileEnrichmentData;
     return loading ? (
       <div>Content is loading...</div>
     ) : isEmpty(profile) ? (
       <div>Profile is empty</div>
     ) : (
       <React.Fragment>
-        <VKInformationPanel profileInDB={profileInDB} />
+        <VKInformationPanel profileInDB={profileInDB} profileControlOptions={profileControlOptions} />
         <VkProfileBlockPresentationCompareContainer profile={profile} />
       </React.Fragment>
     );

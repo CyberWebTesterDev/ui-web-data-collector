@@ -1,4 +1,8 @@
 const initialState = {
+  profileControlOptions: {
+    isEditable: true,
+    canBeShown: true,
+  },
   profile: {},
   profileInDB: {},
   compareProfileExtendedData: {},

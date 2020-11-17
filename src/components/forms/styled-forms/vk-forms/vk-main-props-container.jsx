@@ -34,7 +34,7 @@ export const VkOtherPropsContainer = ({ profile }) => {
 
 const PropsRenderer = ({ profile }) => {
   let propsArray = [];
-
+  let i = 0;
   if (Object.keys(profile).length > 0) {
     for (let key in profile) {
       if (key !== "id" && key !== "first_name" && key !== "last_name") {
@@ -43,12 +43,14 @@ const PropsRenderer = ({ profile }) => {
           key === "photo_max" ||
           key === "photo_max_orig"
         ) {
+          i++;
           propsArray.push(
-            <VkPropFieldPhotoLinks propertyName={key} link={profile[key]} />
+            <VkPropFieldPhotoLinks key={i} propertyName={key} link={profile[key]} />
           );
         } else {
+          i++;
           propsArray.push(
-            <VkPropFieldStandard propertyName={key} value={profile[key]} />
+            <VkPropFieldStandard key={i} propertyName={key} value={profile[key]} />
           );
         }
       }
