@@ -16,22 +16,34 @@ export const VKInformationPanel = ({ profileInDB }) => {
 
 const InformationProperty = ({ optionalComment = "" }) => {
   return (
-    <Table inverted collapsing>
-      <Table.Header>
-        <Table.Row>
-          <Table.HeaderCell>Наличие в таблице profiles</Table.HeaderCell>
-          <Table.HeaderCell>Наличие в таблице check_profiles</Table.HeaderCell>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>
-            <Icon name={"address card"} size="big"></Icon>{" "}
-            {" " + optionalComment}
-          </Table.Cell>
-          <Table.Cell>?</Table.Cell>
-        </Table.Row>
-      </Table.Body>
-    </Table>
+    <Grid columns={3} padded>
+      <Grid.Row>
+        <Grid.Column>
+          <Table inverted collapsing>
+            <Table.Header>
+              <Table.Row>
+                <Table.HeaderCell>Наличие в таблице profiles</Table.HeaderCell>
+                <Table.HeaderCell>
+                  Наличие в таблице check_profiles
+                </Table.HeaderCell>
+              </Table.Row>
+            </Table.Header>
+            <Table.Body>
+              <Table.Row textAlign="center">
+                <Table.Cell>
+                  <Icon name="checkmark" size="big" color={"green"}></Icon>
+                </Table.Cell>
+                <Table.Cell>
+                  <Icon name="cancel" size="big" color={"red"}></Icon>
+                </Table.Cell>
+              </Table.Row>
+            </Table.Body>
+          </Table>
+        </Grid.Column>
+        <Grid.Column textAlign="center">
+          <h5>Test Column Grid</h5>
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
