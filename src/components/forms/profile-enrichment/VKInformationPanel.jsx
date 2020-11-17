@@ -1,7 +1,7 @@
 import React from "react";
 import { has } from "lodash";
 import { getBEMClassName } from "../../utils/bem-helper";
-import { Grid, Icon, Table } from "semantic-ui-react";
+import { Grid, Icon, Table, Menu } from "semantic-ui-react";
 
 export const VKInformationPanel = ({ profileInDB }) => {
   if (has(profileInDB, "hasProfileCheckRow")) {
@@ -40,8 +40,18 @@ const InformationProperty = ({ optionalComment = "" }) => {
             </Table.Body>
           </Table>
         </Grid.Column>
-        <Grid.Column textAlign="center">
-          <h5>Test Column Grid</h5>
+        <Grid.Column textAlign="right">
+          <Menu
+            attached="top"
+            tabular
+            inverted
+            position="right"
+            size={"large"}
+            color="brown"
+          >
+            <Menu.Item name="Действия" />
+            <Menu.Item name="Подробности" />
+          </Menu>
         </Grid.Column>
       </Grid.Row>
     </Grid>
