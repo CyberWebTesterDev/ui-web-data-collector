@@ -18,7 +18,27 @@
   @include mainProfileInfoLabel()
 }
 
-.red-border-mod {
+.m-red-border {
   @include setPropValue(border-color, red);
   @include setPropValue(border-style, solid);
+}
+
+.prx_v_k_information_panel_block__menu_segment {
+  background-color: #6e482f;
+}
+
+.m-text-align-center {
+  @include setPropValue(text-align, center);
+}
+
+.m-position-rel {
+  position: relative;
+}
+
+.m-position-abs {
+  position: absolute;
+}
+
+.m-position-fix {
+  position: fixed;
 }

@@ -47,3 +47,7 @@
 @mixin setPropValue($propertyName, $value) {
   #{$propertyName}: $value;
 }
+
+@mixin paddingX($value) {
+  @include setPropValue(padding, $value)
+}

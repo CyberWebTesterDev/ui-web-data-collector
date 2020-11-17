@@ -2,7 +2,7 @@
 export const getBEMClassName = (blockName, elementName = '', modifierName = []) => {
     const prefix = 'prx_';
     const blockNameToElementNameDelimiter = '__';
-    const elementNameToModifierDelimiter = '-';
+    const elementNameToModifierDelimiter = ' ';
     let className = `${prefix}${transformElementName(blockName)}`;
 
     if (elementName) {
@@ -26,7 +26,7 @@ const transformElementName = (blockName, type = 'block') => {
                     splitArrayByUpperCase[idx] = word.toLowerCase() + '_block';
                     break;
                 case 'mod':
-                    splitArrayByUpperCase[idx] = word.toLowerCase() + '_mod';
+                    splitArrayByUpperCase[idx] = word.toLowerCase();
                     break;
                 case 'element':
                     splitArrayByUpperCase[idx] = word.toLowerCase();

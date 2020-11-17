@@ -1,7 +1,7 @@
 import React from "react";
 import { has } from "lodash";
 import { getBEMClassName } from "../../utils/bem-helper";
-import { Grid, Icon, Table, Menu } from "semantic-ui-react";
+import { Grid, Icon, Table, Menu, Rating } from "semantic-ui-react";
 
 export const VKInformationPanel = ({ profileInDB }) => {
   if (has(profileInDB, "hasProfileCheckRow")) {
@@ -16,7 +16,7 @@ export const VKInformationPanel = ({ profileInDB }) => {
 
 const InformationProperty = ({ optionalComment = "" }) => {
   return (
-    <Grid columns={3} padded>
+    <Grid columns={2} padded>
       <Grid.Row>
         <Grid.Column>
           <Table inverted collapsing>
@@ -42,6 +42,8 @@ const InformationProperty = ({ optionalComment = "" }) => {
         </Grid.Column>
         <Grid.Column textAlign="right">
           <Menu
+            fluid
+            widths={2}
             attached="top"
             tabular
             inverted
@@ -52,8 +54,33 @@ const InformationProperty = ({ optionalComment = "" }) => {
             <Menu.Item name="Действия" />
             <Menu.Item name="Подробности" />
           </Menu>
+          <React.Fragment>
+            <MenuFragment visible />
+          </React.Fragment>
+        </Grid.Column>
+        <Grid.Column>
+          <RatingComponent value={0}/>
         </Grid.Column>
       </Grid.Row>
     </Grid>
   );
 };
+
+const MenuFragment = ({ visible = false, modifier = "" }) => {
+  return visible ? (
+    <div
+      className={getBEMClassName("VKInformationPanel", "menuSegment", [
+        "m-position-rel",
+        "m-text-align-center",
+      ])}
+    >
+      Segment Menu
+    </div>
+  ) : false;
+};
+
+const RatingComponent = ({optionalComment = '', value = 0}) => {
+  return (
+      <div>Оценка {optionalComment}: <Rating maxRating={10} clearable icon={'star'} defaultRating={value}/> ({value})</div>
+  )
+}
