@@ -1,7 +1,7 @@
 import React from "react";
 import { has } from "lodash";
 import { getBEMClassName } from "../../utils/bem-helper";
-import { Grid } from "semantic-ui-react";
+import { Grid, Icon, Table } from "semantic-ui-react";
 
 export const VKInformationPanel = ({ profileInDB }) => {
   if (has(profileInDB, "hasProfileCheckRow")) {
@@ -16,20 +16,22 @@ export const VKInformationPanel = ({ profileInDB }) => {
 
 const InformationProperty = ({ optionalComment = "" }) => {
   return (
-    <div className={getBEMClassName("InformationProperty")}>
-      <Grid columns={5} stackable padded>
-        <Grid.Row>
-          <Grid.Column>
-            <div style={{color: 'cyan'}}>Наличие в БД</div>
-          </Grid.Column>
-          <Grid.Column color={'green'}>
-            <div>{optionalComment}</div>
-          </Grid.Column>
-          <Grid.Column>
-            <div>Тест2</div>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    </div>
+    <Table inverted collapsing>
+      <Table.Header>
+        <Table.Row>
+          <Table.HeaderCell>Наличие в таблице profiles</Table.HeaderCell>
+          <Table.HeaderCell>Наличие в таблице check_profiles</Table.HeaderCell>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>
+            <Icon name={"address card"} size="big"></Icon>{" "}
+            {" " + optionalComment}
+          </Table.Cell>
+          <Table.Cell>?</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
   );
 };

@@ -7,6 +7,8 @@ import "../static/modals.css";
 import "../static/popups.css";
 import "../static/styles-pre.scss";
 import 'semantic-ui-css/components/grid.css';
+import 'semantic-ui-css/components/table.css';
+import 'semantic-ui-css/components/icon.css';
 import App from "../src/components/app/app";
 import { BrowserRouter as Router } from "react-router-dom";
 import store from "./store";
