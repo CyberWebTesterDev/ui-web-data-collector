@@ -1,13 +1,19 @@
+const initialFormValues = {
+  name: 'vk-en-control-panel',
+  values: [
+    {
+      fieldName: 'addToFavorite',
+      fieldValue: false
+    },
+    {
+      fieldName: 'yearPicker',
+      fieldValue: ''
+    }
+  ]
+}
+
 const initialState = {
-  form: {
-    name: null,
-    values: [
-      {
-        fieldName: null,
-        fieldValue: false,
-      },
-    ],
-  },
+  form: initialFormValues
 };
 
 export const formReducer = (state = initialState, action) => {
@@ -18,27 +24,47 @@ export const formReducer = (state = initialState, action) => {
       return { ...state, form: { ...state.form, name: action.payload } };
     case "UPDATE_FORM_VALUE":
       //обновляет значение определенного поля в форме
-      if (isElementPresent(state.form.values, action.payload.fieldName)[0]) {
-        const idx = isElementPresent(
-          state.form.values,
-          action.payload.fieldName
-        )[1];
-        return {
-          ...state,
-          form: {
-            ...state.form,
-            values: sliceElementInArray(state.form.values, idx, action.payload),
-          },
-        };
-      } else {
-        return {
-          ...state,
-          form: {
-            ...state.form,
-            values: [...state.form.values, ...action.payload],
-          },
-        };
-      }
+        if (isElementPresent(state.form.values, action.payload.fieldName)[0]) {
+          console.log(`formReducer: action type: ${action.type}`);
+          console.log(
+            `formReducer: condition value: ${
+              isElementPresent(state.form.values, action.payload.fieldName)[0]
+            }`
+          );
+          console.log(
+            `formReducer: idx: ${
+              isElementPresent(state.form.values, action.payload.fieldName)[1]
+            }`
+          );
+          const idx = isElementPresent(
+            state.form.values,
+            action.payload.fieldName
+          )[1];
+          let arrayCopy = state.form.values
+          arrayCopy[idx] = action.payload;
+          return {
+            ...state,
+            form: {
+              ...state.form,
+              values: arrayCopy
+            },
+          };
+        } else {
+          console.log(
+            `formReducer: condition value: ${
+              isElementPresent(state.form.values, action.payload.fieldName)[0]
+            }`
+          );
+          let arrayCopy = state.form.values
+          arrayCopy.push(action.payload);
+          return {
+            ...state,
+            form: {
+              ...state.form,
+              values: arrayCopy,
+            },
+          };
+        }
     case "CLEAN_FORM":
       return initialState;
     default:
@@ -49,6 +75,8 @@ export const formReducer = (state = initialState, action) => {
 const isElementPresent = (array = [], fieldName) => {
   let idx = -1;
   if (array.length > 0) {
+    console.log(`Comparing fieldName: ${fieldName} with array \n`);
+    console.log(array);
     idx = array.findIndex((value) => (value.fieldName = fieldName));
   }
   return [idx !== -1, idx];
@@ -56,11 +84,19 @@ const isElementPresent = (array = [], fieldName) => {
 
 const sliceElementInArray = (array = [], index = 0, replacer) => {
   if (array.length > 0) {
-    let result = [
-      ...array.slice(0, index),
-      replacer,
-      ...array.slice(index + 1, array.length),
-    ];
+    let result = [];
+    if (index > 0) {
+      result = [
+        ...array.slice(0, index),
+        replacer,
+        ...array.slice(index + 1),
+      ];
+    } else {
+      result = [
+        replacer
+      ];
+    }
+
     return result;
   }
 };

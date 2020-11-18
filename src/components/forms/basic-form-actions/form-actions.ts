@@ -15,7 +15,8 @@ export const selectFormName = (formName: string): TAction => {
   };
 };
 
-export const updateFormValue = (formValue: TFormValue): TAction => {
+export const updateFormValue = (caller: string, formValue: TFormValue): TAction => {
+  console.log(`Action creator updateFormValue has been called by ${caller}`);
   return {
     type: "UPDATE_FORM_VALUE",
     payload: formValue,

@@ -3,34 +3,33 @@ import { Button, Checkbox } from "semantic-ui-react";
 import { CreateDivBlock } from "../../utils/bem-helper";
 import * as actions from "../basic-form-actions/form-actions";
 import { connect } from "react-redux";
+import { YearPicker } from "./control-elements";
+import { getFormNameSelector, getFormValuesSelector } from "./vk-en-selectors";
 
 class VKenControlPanelController extends React.Component {
   formName = "vk-en-control-panel";
   isChecked = false;
-  fieldNames = ["addToFavorite"];
   labels = ["Добавить в избранные"];
   componentDidMount() {
-    console.log(`VKenControlPanelController: mounted`);
-    const { selectFormName, updateFormValue } = this.props;
-    selectFormName(this.formName);
-    this.fieldNames.forEach((fieldName) => {
-      updateFormValue({
-        fieldName,
-        fieldValue: false,
-      });
-    });
+    console.log(`VKenControlPanelController: mounted. Props: \n`);
+    console.log(this.props);
   }
   componentWillUnmount() {
     const { cleanForm } = this.props;
     cleanForm();
   }
-  selectFieldValueByName = (fieldName) => {
-    const { form } = this.props.form;
-    const idx = form.values.findIndex((value) => value.fieldName == fieldName);
-    if (idx != -1) {
-      return form.values[idx].fieldValue;
-    }
-    return false;
+  componentDidUpdate() {
+    console.log(`VKenControlPanelController: updated. Props: \n`);
+    console.log(this.props);
+  }
+
+  getFieldValueByName = (fieldName = null) => {
+    console.log(`VKenControlPanelController.getFieldValueByName called with parameter: ${fieldName}`)
+    const { values } = this.props;
+    const object = values.find((object) => object.fieldName == fieldName);
+    let result = object ? object.fieldValue : false;
+    console.log(`VKenControlPanelController.getFieldValueByName will return value: ${result}`)
+    return result;
   };
 
   render() {
@@ -38,48 +37,33 @@ class VKenControlPanelController extends React.Component {
 
     return (
       <CreateDivBlock name={"VKenControlPanel"}>
-        {this.fieldNames.map((fieldName, idx) => {
-          return (
-            <Checkbox
-              key={fieldName}
-              checked={this.selectFieldValueByName(fieldName)}
-              name={fieldName}
-              disabled={!isEditable}
-              label={this.labels[idx]}
-              onChange={() =>
-                updateFormValue({
-                  fieldName,
-                  fieldValue: !this.selectFieldValueByName(fieldName),
-                })
-              }
-            />
-          );
-        })}
+        <Checkbox
+          key={"addToFavorite"}
+          checked={this.getFieldValueByName("addToFavorite")}
+          name={"addToFavorite"}
+          disabled={!isEditable}
+          label={this.labels[0]}
+          onChange={(e) =>
+            updateFormValue("Checkbox", {
+              fieldName: "addToFavorite",
+              fieldValue: !e.target.value,
+            })
+          }
+        />
+        <YearPicker
+            fieldValue={this.getFieldValueByName("yearPicker")}
+          handleOnChange={updateFormValue}
+        />
       </CreateDivBlock>
     );
   }
 }
 
-const CheckBoxHandler = ({ name, isEditable, label, onChange, checked }) => {
-  const handleOnChange = () => {
-    onChange({
-      fieldName: name,
-      fieldValue: !checked,
-    });
-  };
-  return (
-    <Checkbox
-      checked={checked}
-      name={name}
-      disabled={!isEditable}
-      label={label}
-      onChange={handleOnChange}
-    />
-  );
-};
-
 const mapStateToProps = ({ form }) => {
-  return { form };
+  return {
+    name: getFormNameSelector(form),
+    values: getFormValuesSelector(form),
+  };
 };
 
 export default connect(mapStateToProps, actions)(VKenControlPanelController);
