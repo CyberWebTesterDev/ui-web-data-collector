@@ -4,7 +4,11 @@ import { CreateDivBlock } from "../../utils/bem-helper";
 import * as actions from "../basic-form-actions/form-actions";
 import { connect } from "react-redux";
 import { YearPicker } from "./control-elements";
-import { getFormNameSelector, getFormValuesSelector } from "./vk-en-selectors";
+import {
+  getCurrentFavoriteCheckBoxValueSelector,
+  getCurrentFormValuesSelector,
+  getInitialFormValuesSelector,
+} from "./vk-en-selectors";
 
 class VKenControlPanelController extends React.Component {
   formName = "vk-en-control-panel";
@@ -24,35 +28,63 @@ class VKenControlPanelController extends React.Component {
   }
 
   getFieldValueByName = (fieldName = null) => {
-    console.log(`VKenControlPanelController.getFieldValueByName called with parameter: ${fieldName}`)
-    const { values } = this.props;
-    const object = values.find((object) => object.fieldName == fieldName);
-    let result = object ? object.fieldValue : false;
-    console.log(`VKenControlPanelController.getFieldValueByName will return value: ${result}`)
+    console.log(
+      `VKenControlPanelController.getFieldValueByName called with parameter: ${fieldName}`
+    );
+    const { currentValues } = this.props;
+    const object = currentValues.find(
+      (object) => object.fieldName == fieldName
+    );
+    let result = object ? object.fieldValue : undefined;
+    console.log(
+      `VKenControlPanelController.getFieldValueByName will return value: ${result}`
+    );
     return result;
   };
 
   render() {
-    const { isEditable, updateFormValue } = this.props;
+    const {
+      isEditable,
+      updateFormValue,
+      isFormChanged,
+      initialValues,
+      currentFavoriteCheckBoxValue
+    } = this.props;
 
     return (
       <CreateDivBlock name={"VKenControlPanel"}>
         <Checkbox
           key={"addToFavorite"}
-          checked={this.getFieldValueByName("addToFavorite")}
+          checked={
+            this.getFieldValueByName("addToFavorite") === undefined
+              ? initialValues[0].fieldValue
+              : currentFavoriteCheckBoxValue
+          }
           name={"addToFavorite"}
           disabled={!isEditable}
           label={this.labels[0]}
           onChange={(e) =>
             updateFormValue("Checkbox", {
               fieldName: "addToFavorite",
-              fieldValue: !e.target.value,
+              fieldValue:
+                this.getFieldValueByName("addToFavorite") === undefined
+                  ? !initialValues[0].fieldValue
+                  : !currentFavoriteCheckBoxValue,
             })
           }
         />
         <YearPicker
-            fieldValue={this.getFieldValueByName("yearPicker")}
-          handleOnChange={updateFormValue}
+          fieldValue={
+            !isFormChanged
+              ? initialValues[1].fieldValue
+              : this.getFieldValueByName("yearPicker")
+          }
+          handleOnChange={(e) =>
+            updateFormValue("yearPicker", {
+              fieldName: "yearPicker",
+              fieldValue: e.target.value
+            })
+          }
         />
       </CreateDivBlock>
     );
@@ -61,8 +93,10 @@ class VKenControlPanelController extends React.Component {
 
 const mapStateToProps = ({ form }) => {
   return {
-    name: getFormNameSelector(form),
-    values: getFormValuesSelector(form),
+    initialValues: getInitialFormValuesSelector(form),
+    currentValues: getCurrentFormValuesSelector(form),
+    isFormChanged: form.VKenControlPanel.isFormChanged,
+    currentFavoriteCheckBoxValue: getCurrentFavoriteCheckBoxValueSelector(form),
   };
 };
 

@@ -12,10 +12,7 @@ export const YearPicker = ({ handleOnChange }) => {
   return (
     <>
       <label htmlFor={"years-picker"}>Укажите год рождения</label>
-      <select onChange={(e) => handleOnChange('YearPicker', {
-        fieldName: 'yearPicker',
-        fieldValue: e.target.value
-      })} id={"years-picker"}>{options}</select>
+      <select onChange={handleOnChange} id={"years-picker"}>{options}</select>
     </>
   );
 };

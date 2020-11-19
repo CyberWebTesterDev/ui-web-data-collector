@@ -5,7 +5,7 @@ import { combineReducers } from "redux";
 import { postViewReducer } from "./post-view-reducers";
 import { modalReducer } from "./modal-reducer";
 import { vkEnrichmentProfileReducer } from "./vk-enrichment-reducer";
-import { formReducer } from "./form-reducer";
+import { formControlReducer } from "./form-reducer";
 
 const mainReducer = combineReducers({
   vkData: reducerVK,
@@ -14,7 +14,7 @@ const mainReducer = combineReducers({
   postForm: postViewReducer,
   modal: modalReducer,
   profileEnrichmentData: vkEnrichmentProfileReducer,
-  form: formReducer
+  form: formControlReducer
 });
 
 export default mainReducer;
