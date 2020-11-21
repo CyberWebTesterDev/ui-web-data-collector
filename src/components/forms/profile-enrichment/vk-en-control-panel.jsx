@@ -1,6 +1,6 @@
 import React from "react";
-import { Button, Checkbox } from "semantic-ui-react";
-import { CreateDivBlock } from "../../utils/bem-helper";
+import { Button, Checkbox, Icon } from "semantic-ui-react";
+import { CreateDivBlock, NestedBlock } from "../../utils/bem-helper";
 import * as actions from "../basic-form-actions/form-actions";
 import { connect } from "react-redux";
 import { YearPicker } from "./control-elements";
@@ -9,6 +9,7 @@ import {
   getCurrentFormValuesSelector,
   getInitialFormValuesSelector,
 } from "./vk-en-selectors";
+import { popupHide, popupShow } from "../popups/popup-actions";
 
 class VKenControlPanelController extends React.Component {
   formName = "vk-en-control-panel";
@@ -48,11 +49,12 @@ class VKenControlPanelController extends React.Component {
       updateFormValue,
       isFormChanged,
       initialValues,
-      currentFavoriteCheckBoxValue
+      currentFavoriteCheckBoxValue,
+      popupShow
     } = this.props;
 
     return (
-      <CreateDivBlock name={"VKenControlPanel"}>
+      <CreateDivBlock name={"VKenControlPanel"} modifiers={['m-width-max-content', 'm-position-rel', 'm-height-max-content']}>
         <Checkbox
           key={"addToFavorite"}
           checked={
@@ -63,7 +65,7 @@ class VKenControlPanelController extends React.Component {
           name={"addToFavorite"}
           disabled={!isEditable}
           label={this.labels[0]}
-          onChange={(e) =>
+          onChange={() =>
             updateFormValue("Checkbox", {
               fieldName: "addToFavorite",
               fieldValue:
@@ -82,10 +84,12 @@ class VKenControlPanelController extends React.Component {
           handleOnChange={(e) =>
             updateFormValue("yearPicker", {
               fieldName: "yearPicker",
-              fieldValue: e.target.value
+              fieldValue: e.target.value,
             })
           }
         />
+          <h5>=========</h5>
+          <Icon name={'save'} size={'large'} />
       </CreateDivBlock>
     );
   }
@@ -100,4 +104,4 @@ const mapStateToProps = ({ form }) => {
   };
 };
 
-export default connect(mapStateToProps, actions)(VKenControlPanelController);
+export default connect(mapStateToProps, {...actions, popupShow, popupHide})(VKenControlPanelController);

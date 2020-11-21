@@ -11,14 +11,20 @@ import {
   Button,
 } from "semantic-ui-react";
 import { setMaxWidth, setWidth } from "../../utils/css-class-util";
-import VKenControlPanelController, { VKenControlPanel } from "./vk-en-control-panel";
+import VKenControlPanelController, {
+  VKenControlPanel,
+} from "./vk-en-control-panel";
 
 export const VKInformationPanel = ({ profileInDB, profileControlOptions }) => {
-  return <InformationProperty profileInDB={profileInDB} profileControlOptions={profileControlOptions} />;
+  return (
+    <InformationProperty
+      profileInDB={profileInDB}
+      profileControlOptions={profileControlOptions}
+    />
+  );
 };
 
 const InformationProperty = ({ profileInDB, profileControlOptions }) => {
-
   return (
     <Grid columns={1} padded>
       <Grid.Row>
@@ -34,7 +40,12 @@ const InformationProperty = ({ profileInDB, profileControlOptions }) => {
                 <Table.HeaderCell>Наличие ребенка</Table.HeaderCell>
                 <Table.HeaderCell textAlign="center">
                   Панель управления
-                  <Button icon={"angle down"} color={"brown"} fluid size={'mini'}></Button>
+                  <Button
+                    icon={"angle down"}
+                    color={"brown"}
+                    fluid
+                    size={"mini"}
+                  ></Button>
                 </Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -63,7 +74,9 @@ const InformationProperty = ({ profileInDB, profileControlOptions }) => {
                   <TableCellBoolean flag={profileInDB.hasChild} />
                 </Table.Cell>
                 <Table.Cell>
-                  <VKenControlPanelController isEditable={profileControlOptions.isEditable} />
+                  <VKenControlPanelController
+                    isEditable={profileControlOptions.isEditable}
+                  />
                 </Table.Cell>
               </Table.Row>
             </Table.Body>
@@ -124,13 +137,13 @@ const RatingComponent = ({ name = "", value = 0 }) => {
 
 const DivDivider = ({ parentClassName = "", modifiers = [] }) => {
   return (
-    <div
-      className={getBEMClassName(
+    <React.Fragment
+    className={getBEMClassName(
         parentClassName,
         "gridColumnDivider",
         modifiers
-      )}
-    ></div>
+    )}
+    />
   );
 };
 

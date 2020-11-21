@@ -11,6 +11,9 @@ type TAction = {
   payload?: string;
 };
 // middleware для асинхронного запроса на получение данных по профайлу через VK API
+// перехватывает объект action с типами FETCH_VK_EN_PROFILE_DATA GET_VK_EN_DB_PROFILE_DATA
+// затем осуществляет вызов асинхронных функций, после получения результата
+// передает его дальше в редьюсер
 export const getVKProfileById = () => (dispatch: (action: TAction) => void) => (
   action: TAction
 ) => {
