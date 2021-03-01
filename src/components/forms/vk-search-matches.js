@@ -326,6 +326,10 @@ const GetMatchesByQuery = ({ caller }) => {
             <option value="2000">2000</option>
             <option value="2001">2001</option>
             <option value="2002">2002</option>
+            <option value="2003">2003</option>
+            <option value="2004">2004</option>
+            <option value="2005">2005</option>
+            <option value="2006">2006</option>
           </select>
           <button
             className="btn btn-info"
