@@ -29,7 +29,11 @@ export const getIndexInArrayOfObjectsById = (id, array) => {
     });
   }
 };
-
+// commit 1
+// commit 2
+// commit 3
+// commit 4
+// commit 5
 export const intersectIdChecker = (sourceArray, targetArray) => {
   sourceArray.forEach((el, idx) => {
     if (el) {
