@@ -5,8 +5,11 @@ import {
    VkPropFieldPhotoLinks,
    VkPropFieldStandard,
 } from './vk-prop-fields';
+import type { TProfileRequest } from './vk-forms-types';
 
-export const VkMainPropsContainer = ({ profile }) => {
+export const VkMainPropsContainer = ({
+   profile,
+}: TProfileRequest): React.ReactFragment => {
    return (
       <React.Fragment>
          <div className="main-parent-block">
@@ -21,7 +24,7 @@ export const VkMainPropsContainer = ({ profile }) => {
    );
 };
 
-export const VkOtherPropsContainer = ({ profile }) => {
+export const VkOtherPropsContainer = ({ profile }: TProfileRequest) => {
    return (
       <React.Fragment>
          <div className="main-parent-block">
@@ -32,7 +35,7 @@ export const VkOtherPropsContainer = ({ profile }) => {
    );
 };
 
-const PropsRenderer = ({ profile }) => {
+const PropsRenderer = ({ profile }: TProfileRequest): React.ComponentProps<any> => {
    let propsArray = [];
    let i = 0;
    if (Object.keys(profile).length > 0) {
