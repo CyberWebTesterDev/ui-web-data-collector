@@ -11,3 +11,15 @@ type TProfile = {
    photo_max: string;
    [key: string]: string;
 };
+export type TImageProp = {
+   label: string;
+   imgSrc: string;
+}
+export type TVKid = {
+   id: string
+}
+export type TPropertyStructure = {
+   propertyName: string;
+   value: boolean;
+   link: string;
+}
