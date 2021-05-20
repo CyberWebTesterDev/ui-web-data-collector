@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './control-panel.css';
+import "./control-panel.css";
 
 export const TestControlPanel = React.memo<undefined>(() => {
    let btnArrExample: TButton[] = [
