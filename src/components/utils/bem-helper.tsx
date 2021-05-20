@@ -38,7 +38,6 @@ export const CreateDivBlock = ({
    }
    return <div className={className}></div>;
 };
-
 export const NestedBlock = ({
    nameParentBlock,
    blockName,
@@ -57,7 +56,6 @@ export const NestedBlock = ({
    }
    return <div className={className}></div>;
 };
-
 export const ChildElement = ({
    parentClassName,
    elementName,
@@ -76,7 +74,6 @@ export const ChildElement = ({
    }
    return <div className={className}></div>;
 };
-
 export const getBEMClassName = ({
    blockName,
    elementName = '',
@@ -95,7 +92,6 @@ export const getBEMClassName = ({
    }
    return className;
 };
-
 const transformElementName = (
    blockName: string,
    type: string = 'block',
@@ -121,7 +117,6 @@ const transformElementName = (
    });
    return splitArrayByUpperCase.join('');
 };
-
 const createModifierName = (key: string, value: string): string => {
    return transformElementName(key, 'mod') + '_' + value;
 };

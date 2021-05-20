@@ -23,8 +23,9 @@ export const VkMainPropsContainer = ({
       </React.Fragment>
    );
 };
-
-export const VkOtherPropsContainer = ({ profile }: TProfileRequest) => {
+export const VkOtherPropsContainer = ({
+   profile,
+}: TProfileRequest): JSX.Element => {
    return (
       <React.Fragment>
          <div className="main-parent-block">
@@ -34,8 +35,9 @@ export const VkOtherPropsContainer = ({ profile }: TProfileRequest) => {
       </React.Fragment>
    );
 };
-
-const PropsRenderer = ({ profile }: TProfileRequest): React.ComponentProps<any> => {
+const PropsRenderer = ({
+   profile,
+}: TProfileRequest): React.ComponentProps<any> | boolean => {
    let propsArray = [];
    let i = 0;
    if (Object.keys(profile).length > 0) {
@@ -67,5 +69,7 @@ const PropsRenderer = ({ profile }: TProfileRequest): React.ComponentProps<any> 
          }
       }
       return propsArray;
-   } else return false;
+   } else {
+      return false;
+   }
 };

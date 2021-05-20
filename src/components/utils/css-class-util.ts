@@ -8,25 +8,22 @@ const mainPropsNames: Array<string> = [
    'fontSize',
 ];
 type TProp = {
-  [key: string]: string
-}
-
+   [key: string]: string;
+};
 export const makeCSSRuleByPropName = (
    propNameInCamelCase: string,
    value: string,
 ): TProp => {
    console.log({
-     [propNameInCamelCase]: value,
+      [propNameInCamelCase]: value,
    });
    return {
       [propNameInCamelCase]: value,
    };
 };
-
 const createModifierName = (key: string, value: string): string => {
    return key + '_' + value;
 };
-
 export const setWidth = (value: string = null) => {
    return {
       width: value,
@@ -37,19 +34,16 @@ export const setLeft = (value: string = null) => {
       left: value,
    };
 };
-
 export const setRight = (value: string = null) => {
    return {
       right: value,
    };
 };
-
 export const setTop = (value: string = null) => {
    return {
       top: value,
    };
 };
-
 export const setMaxWidth = (value: string = null) => {
    return {
       maxWidth: value,

@@ -3,13 +3,10 @@ import './styled.css';
 import { getBlobFromUrl } from '../../../utils/binary-util';
 import type { TImageProp, TPropertyStructure, TVKid } from './vk-forms-types';
 
-export const VkPropFieldHeadLabel = (
-   props: TImageProp,
-): React.ReactFragment => {
+export const VkPropFieldHeadLabel = (props: TImageProp): JSX.Element => {
    // const image = new Image();
    // image.src = props.imgSrc;
    // const ShowImage = image.onload = () => <img src={image.src}/>;
-
    // getBlobFromUrl(props.imgSrc).then( (blob) => {
    //     //alert('blob данные изображения получены!');
    //     const img = document.getElementById('avatar_img');
@@ -25,8 +22,7 @@ export const VkPropFieldHeadLabel = (
       </React.Fragment>
    );
 };
-
-export const VkPropFieldID = ({ id }: TVKid): React.ReactFragment => {
+export const VkPropFieldID = ({ id }: TVKid): JSX.Element => {
    return (
       <React.Fragment>
          <div className="property-child-block">
@@ -40,11 +36,10 @@ export const VkPropFieldID = ({ id }: TVKid): React.ReactFragment => {
       </React.Fragment>
    );
 };
-
 export const VkPropFieldStandard = ({
    propertyName,
    value,
-}: TPropertyStructure): React.ReactFragment => {
+}: TPropertyStructure): JSX.Element => {
    return (
       <React.Fragment>
          <div className="property-child-block">
@@ -62,11 +57,10 @@ export const VkPropFieldStandard = ({
       </React.Fragment>
    );
 };
-
 export const VkPropFieldPhotoLinks = ({
    propertyName,
    link,
-}: TPropertyStructure): React.ReactFragment => {
+}: TPropertyStructure): JSX.Element => {
    return (
       <React.Fragment>
          <div className="property-child-block">

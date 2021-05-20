@@ -20,6 +20,6 @@ export type TVKid = {
 }
 export type TPropertyStructure = {
    propertyName: string;
-   value: boolean;
-   link: string;
+   value?: boolean | string;
+   link?: string;
 }
