@@ -36,7 +36,6 @@ class GetMatchesFormController extends React.Component {
       //еще один вариант диспатча через store
       //store.dispatch({type: 'SPINNER_SHOW', payload: 'SHOW FROM STORE'});
       //store.dispatch(popupShow('TEST', 5000));
-
       const {
          service,
          spinnerShow,
@@ -45,7 +44,6 @@ class GetMatchesFormController extends React.Component {
          searchForm,
          vkMatchProfilesMatchesLoaded,
       } = this.props;
-
       const {
          searchString,
          quantity,
@@ -57,7 +55,6 @@ class GetMatchesFormController extends React.Component {
          pickedMonth,
          pickedDay,
       } = searchForm;
-
       if (!(pickedYear || pickedAgeFrom || pickedAgeTo)) {
          store.dispatch(
             popupShow(
@@ -68,7 +65,6 @@ class GetMatchesFormController extends React.Component {
          );
          return;
       }
-
       try {
          spinnerShow(`Поиск подходящих профайлов`);
          let matches = await service.getMatchProfilesByQuery(
@@ -90,11 +86,9 @@ class GetMatchesFormController extends React.Component {
          throw e;
       }
    };
-
    onChangeListener = (e) => {
       // console.log(`GetMatchesFormController: onChangeListener has been called with params:
       // ${e.target.id}, ${e.target.value}`);
-
       this.props.vkMatchSearchFormChange(e.target.id, e.target.value);
       this.props.vkValidateSearchForm();
    };
@@ -161,7 +155,6 @@ const mapDispatchToProps = {
    spinnerShow,
    spinnerHide,
 };
-
 export default withMainProps(
    connect(mapStateToProps, mapDispatchToProps)(GetMatchesFormController),
 );

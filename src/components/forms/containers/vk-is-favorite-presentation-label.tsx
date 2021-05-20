@@ -8,5 +8,7 @@ export const FavoriteMarlPresentationLabel = ({
 }: TIsFavorite): React.FunctionComponent<TIsFavorite> | boolean => {
    return isFavorite ? (
       <div className="label-favorite-mark">В избранном &#10003;</div>
-   ) : false;
+   ) : (
+      false
+   );
 };
