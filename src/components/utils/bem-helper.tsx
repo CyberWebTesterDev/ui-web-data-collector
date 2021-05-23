@@ -18,7 +18,7 @@ interface INestedBlock {
 }
 
 interface IChildElement {
-   parentClassName: string;
+   parentClassName?: string;
    elementName: string;
    modifiers: string[];
    blockName?: string;

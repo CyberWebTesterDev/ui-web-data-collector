@@ -1,5 +1,5 @@
-import React from 'react';
-import { has } from 'lodash';
+import * as React from 'react';
+import { useCallback } from 'react';
 import { getBEMClassName } from '../../utils/bem-helper';
 import {
    Grid,
@@ -11,19 +11,26 @@ import {
    Button,
 } from 'semantic-ui-react';
 import { setMaxWidth, setWidth } from '../../utils/css-class-util';
-import VKenControlPanelController, {
-   VKenControlPanel,
-} from './vk-en-control-panel';
+import VKenControlPanelController from './vk-en-control-panel';
+import {
+   TDivDividerProps,
+   TVKInformationPanelProps,
+} from './vk-info-panel-types';
 
-export const VKInformationPanel = ({ profileInDB, profileControlOptions }) => {
-   return (
-      <InformationProperty
-         profileInDB={profileInDB}
-         profileControlOptions={profileControlOptions}
-      />
-   );
-};
-const InformationProperty = ({ profileInDB, profileControlOptions }) => {
+export const VKInformationPanel = React.memo<TVKInformationPanelProps>(
+   ({ profileInDB, profileControlOptions }) => {
+      return (
+         <InformationProperty
+            profileInDB={profileInDB}
+            profileControlOptions={profileControlOptions}
+         />
+      );
+   },
+);
+const InformationProperty = ({
+   profileInDB,
+   profileControlOptions,
+}: TVKInformationPanelProps): JSX.Element => {
    return (
       <Grid columns={1} padded>
          <Grid.Row>
@@ -88,14 +95,14 @@ const InformationProperty = ({ profileInDB, profileControlOptions }) => {
                </Table>
             </Grid.Column>
             <Grid.Column>
-               <DivDivider
+               <DivDividerMemoized
                   parentClassName={'VKInformationPanel'}
                   modifiers={['m-position-rel', 'm-margin-top']}
                />
                <RatingComponent name={'общая'} value={profileInDB.estimation} />
             </Grid.Column>
             <Grid.Column>
-               <DivDivider
+               <DivDividerMemoized
                   parentClassName={'VKInformationPanel'}
                   modifiers={['m-position-rel', 'm-margin-top']}
                />
@@ -108,13 +115,17 @@ const InformationProperty = ({ profileInDB, profileControlOptions }) => {
       </Grid>
    );
 };
-const MenuFragment = ({ visible = false, modifiers = [] }) => {
+const MenuFragment = ({
+   visible = false,
+   modifiers = [],
+}): JSX.Element | boolean => {
    return visible ? (
       <div
-         className={getBEMClassName('VKInformationPanel', 'menuSegment', [
-            'm-position-rel',
-            'm-text-align-center',
-         ])}
+         className={getBEMClassName({
+            blockName: 'VKInformationPanel',
+            elementName: 'menuSegment',
+            modifiers: ['m-position-rel', 'm-text-align-center'],
+         })}
          style={{ ...setWidth('500px'), ...setMaxWidth('1000px') }}
       >
          Segment Menu
@@ -123,7 +134,7 @@ const MenuFragment = ({ visible = false, modifiers = [] }) => {
       false
    );
 };
-const RatingComponent = ({ name = '', value = 0 }) => {
+const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
    return (
       <div>
          Оценка {name}:{' '}
@@ -137,17 +148,25 @@ const RatingComponent = ({ name = '', value = 0 }) => {
       </div>
    );
 };
-const DivDivider = ({ parentClassName = '', modifiers = [] }) => {
-   return (
-      <React.Fragment
-         className={getBEMClassName(
-            parentClassName,
-            'gridColumnDivider',
-            modifiers,
-         )}
-      />
-   );
-};
+const DivDividerMemoized = React.memo<TDivDividerProps>(
+   ({ parentClassName = '', modifiers = [] }) => {
+      const DivDivider = useCallback(
+         (parentClassName, modifiers) => {
+            return (
+               <div
+                  className={getBEMClassName({
+                     parentClassName,
+                     elementName: 'gridColumnDivider',
+                     modifiers,
+                  })}
+               />
+            );
+         },
+         [parentClassName, modifiers],
+      );
+      return <DivDivider />;
+   },
+);
 const DropDownWithSpecificOptions = () => {
    const optionsInner = [
       { key: 1, text: 'Да', value: true },
@@ -155,17 +174,37 @@ const DropDownWithSpecificOptions = () => {
    ];
    return <Dropdown options={optionsInner} selection wrapSelection />;
 };
-const NoDataLabelCell = ({ parentName }) => {
+const NoDataLabelCell = ({
+   parentName,
+}: {
+   [key: string]: string;
+}): JSX.Element => {
    return (
-      <div className={getBEMClassName(parentName, 'noDataCell')}>No data</div>
+      <div
+         className={getBEMClassName({
+            parentClassName: parentName,
+            elementName: 'noDataCell',
+            modifiers: [],
+         })}
+      >
+         No data
+      </div>
    );
 };
-const TableCellBoolean = ({ flag }) => {
-   return flag ? (
-      <Icon name="checkmark" size="big" color={'green'}></Icon>
-   ) : flag === false ? (
-      <Icon name="cancel" size="big" color={'red'}></Icon>
-   ) : (
-      <NoDataLabelCell parentName={'VKInformationPanel'} />
+//подход к написанию функционального компонента через useCallback
+const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
+   const TableCallBooleanMemoized = useCallback(
+      (flag) => {
+         return flag ? (
+            <Icon name="checkmark" size="big" color={'green'}></Icon>
+         ) : flag === false ? (
+            <Icon name="cancel" size="big" color={'red'}></Icon>
+         ) : (
+            <NoDataLabelCell parentName={'VKInformationPanel'} />
+         );
+      },
+      [flag],
    );
+   return <TableCallBooleanMemoized />;
 };
+const TableCellBoolean = React.memo<{ flag: boolean }>(TableCellBooleanFn);
