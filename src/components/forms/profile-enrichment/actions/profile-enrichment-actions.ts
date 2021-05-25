@@ -8,54 +8,80 @@ GET_VK_EN_DB_EXTENDED_PROFILE_DATA получение расширенных д�
 INSERT_VK_EN_DB_PROFILE_DATA запись/перезапись профайла в БД
 UPDATE_VK_EN_DB_PROFILE_DATA апдейт параметров профайла в БД
 */
-export const fetchVKEnrichmentProfile = (id) => ({
+interface IProfileEnrichmentActions {
+   fetchVKEnrichmentProfile: {
+      type: string;
+      payload: string;
+   };
+   fetchVKENProfileDataEndSuccess: {
+      type: string;
+      payload?: string;
+   };
+}
+
+export const fetchVKEnrichmentProfile = (
+   id: string,
+): IProfileEnrichmentActions['fetchVKEnrichmentProfile'] => ({
    type: 'FETCH_VK_EN_PROFILE_DATA',
    payload: id,
 });
+
 //функция для тестирования
 export const stopLoad = () => ({ type: 'STOP_LOAD' });
-export const setLoadingStatus = () => ({
-   type: 'SET_VK_EN_PROFILE_DATA',
-   payload: id,
-});
-export const fetchVKENProfileDataEndSuccess = (payload) => {
+
+export const fetchVKENProfileDataEndSuccess = (
+   payload?: string,
+): IProfileEnrichmentActions['fetchVKENProfileDataEndSuccess'] => {
    return {
       type: 'FETCH_VK_EN_PROFILE_DATA_END_SUCCESS',
       payload,
    };
 };
+
 export const fetchVKENProfileDataEndFailure = () => ({
    type: 'FETCH_VK_EN_PROFILE_DATA_END_FAILURE',
 });
-export const getVKENLocalStorageData = (payload) => {
+
+export const getVKENLocalStorageData = (
+   payload: string,
+): IProfileEnrichmentActions['fetchVKENProfileDataEndSuccess'] => {
    return {
       type: 'GET_VK_EN_LOCAL_STORAGE_DATA',
       payload,
    };
 };
-export const getVKENDBProfileData = (id) => {
+
+export const getVKENDBProfileData = (
+   id: string,
+): IProfileEnrichmentActions['fetchVKEnrichmentProfile'] => {
    return {
       type: 'GET_VK_EN_DB_PROFILE_DATA',
       payload: id,
    };
 };
-export const getVKENDBProfileDataEndSuccess = (payload) => {
+
+export const getVKENDBProfileDataEndSuccess = (
+   payload: string,
+): IProfileEnrichmentActions['fetchVKENProfileDataEndSuccess'] => {
    return {
       type: 'GET_VK_EN_DB_PROFILE_DATA_SUCCESS',
       payload,
    };
 };
+
 export const getVKENDBExtendedProfileData = (payload) => {
    return {
       type: 'GET_VK_EN_DB_EXTENDED_PROFILE_DATA',
       payload,
    };
 };
+
 export const insertVKENDBProfileData = () => {
    return {
       type: 'INSERT_VK_EN_DB_PROFILE_DATA',
    };
 };
+
 export const updateVKENDBProfileData = () => {
    return {
       type: 'UPDATE_VK_EN_DB_PROFILE_DATA',

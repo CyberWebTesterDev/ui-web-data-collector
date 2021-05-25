@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { Button, Checkbox, Icon } from 'semantic-ui-react';
 import { CreateDivBlock, NestedBlock } from '../../utils/bem-helper';
 import * as actions from '../basic-form-actions/form-actions';
+// @ts-ignore
 import { connect } from 'react-redux';
 import { YearPicker } from './control-elements';
 import {
@@ -10,9 +11,9 @@ import {
    getInitialFormValuesSelector,
 } from './vk-en-selectors';
 import { popupHide, popupShow } from '../popups/popup-actions';
+import { TVKenControlPanel } from "./vk-info-panel-types";
 
-class VKenControlPanelController extends React.Component {
-   formName = 'vk-en-control-panel';
+class VKenControlPanelController extends React.Component<TVKenControlPanel> {
    isChecked = false;
    labels = ['Добавить в избранные'];
 
@@ -90,7 +91,7 @@ class VKenControlPanelController extends React.Component {
                      ? initialValues[1].fieldValue
                      : this.getFieldValueByName('yearPicker')
                }
-               handleOnChange={(e) =>
+               handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   updateFormValue('yearPicker', {
                      fieldName: 'yearPicker',
                      fieldValue: e.target.value,

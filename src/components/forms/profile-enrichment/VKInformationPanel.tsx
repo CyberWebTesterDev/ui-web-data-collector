@@ -27,6 +27,7 @@ export const VKInformationPanel = React.memo<TVKInformationPanelProps>(
       );
    },
 );
+
 const InformationProperty = ({
    profileInDB,
    profileControlOptions,
@@ -53,7 +54,7 @@ const InformationProperty = ({
                               color={'brown'}
                               fluid
                               size={'mini'}
-                           ></Button>
+                           />
                         </Table.HeaderCell>
                      </Table.Row>
                   </Table.Header>
@@ -115,6 +116,7 @@ const InformationProperty = ({
       </Grid>
    );
 };
+
 const MenuFragment = ({
    visible = false,
    modifiers = [],
@@ -134,6 +136,7 @@ const MenuFragment = ({
       false
    );
 };
+
 const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
    return (
       <div>
@@ -148,6 +151,7 @@ const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
       </div>
    );
 };
+
 const DivDividerMemoized = React.memo<TDivDividerProps>(
    ({ parentClassName = '', modifiers = [] }) => {
       return (
@@ -161,6 +165,7 @@ const DivDividerMemoized = React.memo<TDivDividerProps>(
       );
    },
 );
+
 const DropDownWithSpecificOptions = () => {
    const optionsInner = [
       { key: 1, text: 'Да', value: true },
@@ -168,6 +173,7 @@ const DropDownWithSpecificOptions = () => {
    ];
    return <Dropdown options={optionsInner} selection wrapSelection />;
 };
+
 const NoDataLabelCell = ({
    parentName,
 }: {
@@ -185,6 +191,7 @@ const NoDataLabelCell = ({
       </div>
    );
 };
+
 const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
    const TableCallBoolean = () => {
       return flag ? (
@@ -197,4 +204,5 @@ const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
    };
    return <TableCallBoolean />;
 };
+
 const TableCellBoolean = React.memo<{ flag: boolean }>(TableCellBooleanFn);

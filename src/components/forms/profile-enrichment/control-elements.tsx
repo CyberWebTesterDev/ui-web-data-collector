@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
-export const YearPicker = ({ handleOnChange }) => {
+const YearPickerFn = ({ handleOnChange }: { handleOnChange: () => void }) => {
    let years = [];
    for (let i = 0; i < 25; i++) {
       if (i > 0) {
@@ -24,3 +24,5 @@ export const YearPicker = ({ handleOnChange }) => {
       </>
    );
 };
+
+export const YearPicker = React.memo(YearPickerFn);
