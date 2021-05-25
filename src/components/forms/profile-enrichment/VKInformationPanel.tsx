@@ -150,21 +150,15 @@ const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
 };
 const DivDividerMemoized = React.memo<TDivDividerProps>(
    ({ parentClassName = '', modifiers = [] }) => {
-      const DivDivider = useCallback(
-         (parentClassName, modifiers) => {
-            return (
-               <div
-                  className={getBEMClassName({
-                     parentClassName,
-                     elementName: 'gridColumnDivider',
-                     modifiers,
-                  })}
-               />
-            );
-         },
-         [parentClassName, modifiers],
+      return (
+         <div
+            className={getBEMClassName({
+               parentClassName,
+               elementName: 'gridColumnDivider',
+               modifiers,
+            })}
+         />
       );
-      return <DivDivider />;
    },
 );
 const DropDownWithSpecificOptions = () => {
@@ -191,20 +185,16 @@ const NoDataLabelCell = ({
       </div>
    );
 };
-//подход к написанию функционального компонента через useCallback
 const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
-   const TableCallBooleanMemoized = useCallback(
-      (flag) => {
-         return flag ? (
-            <Icon name="checkmark" size="big" color={'green'}></Icon>
-         ) : flag === false ? (
-            <Icon name="cancel" size="big" color={'red'}></Icon>
-         ) : (
-            <NoDataLabelCell parentName={'VKInformationPanel'} />
-         );
-      },
-      [flag],
-   );
-   return <TableCallBooleanMemoized />;
+   const TableCallBoolean = () => {
+      return flag ? (
+         <Icon name="checkmark" size="big" color={'green'}></Icon>
+      ) : flag === false ? (
+         <Icon name="cancel" size="big" color={'red'}></Icon>
+      ) : (
+         <NoDataLabelCell parentName={'VKInformationPanel'} />
+      );
+   };
+   return <TableCallBoolean />;
 };
 const TableCellBoolean = React.memo<{ flag: boolean }>(TableCellBooleanFn);
