@@ -5,8 +5,14 @@ const initialState = {
    data: {
       text: '',
    },
+} as const;
+
+type TPopUpAction = {
+   type: 'POPUP_SHOW' | 'POPUP_HIDE';
+   payload: { text: string; duration: number; className: string };
 };
-export const popupReducer = (state = initialState, action) => {
+
+export const popupReducer = (state = initialState, action: TPopUpAction) => {
    switch (action.type) {
       case 'POPUP_SHOW':
          console.log(action.type + '\n');
