@@ -1,9 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import { PopupWindowCenter } from './popup';
 import { connect } from 'react-redux';
 import { popupHide, popupShow } from './popup-actions';
+import { TPopupControllerDispatchProps, TPopupControllerProps } from './popup-types';
 
-class PopupController extends React.Component {
+class PopupController extends React.Component<TPopupControllerProps & TPopupControllerDispatchProps> {
    componentDidUpdate() {
       const { popups, popupHide } = this.props;
       console.log(`PopupController: componentDidUpdate()` + '\n');
@@ -29,13 +30,13 @@ class PopupController extends React.Component {
    }
 }
 
-const mapStateToProps = ({ popups }) => {
+const mapStateToProps = <T extends TPopupControllerProps>({ popups }: T) => {
    console.log(popups);
    return {
       popups: popups,
    };
 };
-const mapDispatchToProps = {
+const mapDispatchToProps: TPopupControllerDispatchProps = {
    popupShow,
    popupHide,
 };
