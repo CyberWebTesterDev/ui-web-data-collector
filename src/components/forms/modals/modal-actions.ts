@@ -1,6 +1,7 @@
+import { TPopUpActionFunctionWithoutArgumentsDispatch } from '../../../lib';
 import store from '../../../store';
 
-export const closeModalDispatch = () => {
+export const closeModalDispatch: TPopUpActionFunctionWithoutArgumentsDispatch = () => {
    store.dispatch({ type: 'CLOSE_MODAL' });
 };
 export const showModalForPostDispatch = (post) => {

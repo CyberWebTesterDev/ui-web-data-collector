@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { useCallback } from 'react';
 import { getBEMClassName } from '../../utils/bem-helper';
 import {
    Grid,
    Icon,
    Table,
-   Menu,
    Rating,
    Dropdown,
    Button,

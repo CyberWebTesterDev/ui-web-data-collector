@@ -18,7 +18,7 @@ export type TVKInformationPanelProps = {
    profileControlOptions: TProfileInDB;
 };
 
-type TVKenControlPanelInitialValue = {
+export type TVKenControlPanelInitialValue = {
    fieldName: string;
    fieldValue: string | boolean;
 };

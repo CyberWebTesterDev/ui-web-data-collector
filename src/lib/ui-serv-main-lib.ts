@@ -1,7 +1,15 @@
 export interface IBasicActionObject {
    type: string;
-   payload?: string | { [key: string]: string | number };
-}
+};
+export interface IActionObjectWithPayload extends IBasicActionObject {
+   payload: {
+      [key: string]: any;
+   }
+};
+
+export interface IActionObjectWithPayloadOptional extends IBasicActionObject {
+   payload?: { [key: string]: any };
+}    
 
 export type TPopUpActionFunction = (
    className: string,
@@ -9,11 +17,7 @@ export type TPopUpActionFunction = (
    duration: string | number,
 ) => IBasicActionObject;
 
-export type TPopUpActionFunctionWithoutArgumentsDispatch = (
-   className: string,
-   text: string,
-   duration: string | number,
-) => void;
+export type TPopUpActionFunctionWithoutArgumentsDispatch = () => void;
 
 export type TPopUpActionFunctionDispatch = (
    className: string,
