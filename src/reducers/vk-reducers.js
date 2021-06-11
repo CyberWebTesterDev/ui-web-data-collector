@@ -1,50 +1,50 @@
 import {
   validateSearchFormMatchesVk,
   validateSearchForInputValues,
-} from "../components/helpers/validators/vk-matches-validator";
+} from '../components/helpers/validators/vk-matches-validator';
 
 const initialState = {
   vkMatches: {
-    clickedProfile: "",
-    previousClickedProfile: "",
+    clickedProfile: '',
+    previousClickedProfile: '',
     matchedProfiles: [],
-    checkedProfiles: []
+    checkedProfiles: [],
   },
   searchForm: {
-    pickedYear: "",
-    pickedAgeFrom: "",
-    pickedAgeTo: "",
-    searchString: "",
-    offset: "",
-    pickedCity: "",
-    pickedMonth: "",
-    pickedDay: "",
-    quantity: "",
+    pickedYear: '',
+    pickedAgeFrom: '',
+    pickedAgeTo: '',
+    searchString: '',
+    offset: '',
+    pickedCity: '',
+    pickedMonth: '',
+    pickedDay: '',
+    quantity: '',
     fieldsValidation: {
       isPickedYearValid: true,
       isPickedAgeFromValid: true,
       isPickedAgeToValid: true,
       isButtonDisabled: true,
       isOffsetValid: true,
-      btnAdditionalClass: "",
-      textForPopUp: "",
-      headTextForPopUp: "",
+      btnAdditionalClass: '',
+      textForPopUp: '',
+      headTextForPopUp: '',
       showPopUp: false,
-      isLabelErrorTextHidden: "hidden",
-      labelErrorText: ""
+      isLabelErrorTextHidden: 'hidden',
+      labelErrorText: '',
     },
   },
   pageRenderDetails: {
     loading: false,
     error: false,
-    showPopUp: false
-  }
+    showPopUp: false,
+  },
 };
 
 export const reducerVK = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_VK_MATCH_PROFILE_REQUEST":
-      console.log("FETCH_VK_MATCH_PROFILE_REQUEST");
+    case 'FETCH_VK_MATCH_PROFILE_REQUEST':
+      console.log('FETCH_VK_MATCH_PROFILE_REQUEST');
       return {
         ...state,
         pageRenderDetails: {
@@ -52,7 +52,7 @@ export const reducerVK = (state = initialState, action) => {
           loading: true,
         },
       };
-    case "FETCH_VK_MATCH_PROFILE_SUCCESS":
+    case 'FETCH_VK_MATCH_PROFILE_SUCCESS':
       return {
         ...state,
         vkMatches: {
@@ -60,7 +60,7 @@ export const reducerVK = (state = initialState, action) => {
           matchedProfiles: action.payload,
         },
       };
-    case "VK_MATCH_PROFILE_FORM_CHANGE":
+    case 'VK_MATCH_PROFILE_FORM_CHANGE':
       const { fieldName, targetValue } = action.payload;
       const newState = {
         //возвращаем только внутренний объект
@@ -72,12 +72,12 @@ export const reducerVK = (state = initialState, action) => {
       };
       //console.log(newState)
       return newState;
-    case "VK_MATCH_PROFILE_FORM_VALIDATE":
+    case 'VK_MATCH_PROFILE_FORM_VALIDATE':
       const { searchForm } = state;
       let validatedForm = {
         ...state,
         ...validateSearchForInputValues(
-          validateSearchFormMatchesVk(searchForm)
+          validateSearchFormMatchesVk(searchForm),
         ),
       };
       // console.log(`Validated form:`+'\n');

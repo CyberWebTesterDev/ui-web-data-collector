@@ -27,8 +27,6 @@ export class ModalsController extends React.Component {
    render() {
       return this.state.visible && this.state.isForPost ? (
          <ModalLargePost post={this.state.post} />
-      ) : (
-         false
-      );
+      ) : false;
    }
 }

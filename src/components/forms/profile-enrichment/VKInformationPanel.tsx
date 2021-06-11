@@ -1,38 +1,36 @@
 import * as React from 'react';
-import { useCallback } from 'react';
 import { getBEMClassName } from '../../utils/bem-helper';
 import {
-   Grid,
-   Icon,
-   Table,
-   Menu,
-   Rating,
-   Dropdown,
-   Button,
+  Grid,
+  Icon,
+  Table,
+  Rating,
+  Dropdown,
+  Button,
 } from 'semantic-ui-react';
 import { setMaxWidth, setWidth } from '../../utils/css-class-util';
 import VKenControlPanelController from './vk-en-control-panel';
 import {
-   TDivDividerProps,
-   TVKInformationPanelProps,
+  TDivDividerProps,
+  TVKInformationPanelProps,
 } from './vk-info-panel-types';
 
 export const VKInformationPanel = React.memo<TVKInformationPanelProps>(
-   ({ profileInDB, profileControlOptions }) => {
-      return (
+  ({ profileInDB, profileControlOptions }) => {
+    return (
          <InformationProperty
             profileInDB={profileInDB}
             profileControlOptions={profileControlOptions}
          />
-      );
-   },
+    );
+  },
 );
 
 const InformationProperty = ({
-   profileInDB,
-   profileControlOptions,
+  profileInDB,
+  profileControlOptions,
 }: TVKInformationPanelProps): JSX.Element => {
-   return (
+  return (
       <Grid columns={1} padded>
          <Grid.Row>
             <Grid.Column>
@@ -114,31 +112,11 @@ const InformationProperty = ({
             </Grid.Column>
          </Grid.Row>
       </Grid>
-   );
-};
-
-const MenuFragment = ({
-   visible = false,
-   modifiers = [],
-}): JSX.Element | boolean => {
-   return visible ? (
-      <div
-         className={getBEMClassName({
-            blockName: 'VKInformationPanel',
-            elementName: 'menuSegment',
-            modifiers: ['m-position-rel', 'm-text-align-center'],
-         })}
-         style={{ ...setWidth('500px'), ...setMaxWidth('1000px') }}
-      >
-         Segment Menu
-      </div>
-   ) : (
-      false
-   );
+  );
 };
 
 const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
-   return (
+  return (
       <div>
          Оценка {name}:{' '}
          <Rating
@@ -149,60 +127,60 @@ const RatingComponent = ({ name = '', value = '0' }): JSX.Element => {
          />{' '}
          ({value})
       </div>
-   );
+  );
 };
 
 const DivDividerMemoized = React.memo<TDivDividerProps>(
-   ({ parentClassName = '', modifiers = [] }) => {
-      return (
+  ({ parentClassName = '', modifiers = [] }) => {
+    return (
          <div
             className={getBEMClassName({
-               parentClassName,
-               elementName: 'gridColumnDivider',
-               modifiers,
+              parentClassName,
+              elementName: 'gridColumnDivider',
+              modifiers,
             })}
          />
-      );
-   },
+    );
+  },
 );
 
 const DropDownWithSpecificOptions = () => {
-   const optionsInner = [
-      { key: 1, text: 'Да', value: true },
-      { key: 2, text: 'Нет', value: false },
-   ];
-   return <Dropdown options={optionsInner} selection wrapSelection />;
+  const optionsInner = [
+    { key: 1, text: 'Да', value: true },
+    { key: 2, text: 'Нет', value: false },
+  ];
+  return <Dropdown options={optionsInner} selection wrapSelection />;
 };
 
 const NoDataLabelCell = ({
-   parentName,
+  parentName,
 }: {
-   [key: string]: string;
+  [key: string]: string;
 }): JSX.Element => {
-   return (
+  return (
       <div
          className={getBEMClassName({
-            parentClassName: parentName,
-            elementName: 'noDataCell',
-            modifiers: [],
+           parentClassName: parentName,
+           elementName: 'noDataCell',
+           modifiers: [],
          })}
       >
          No data
       </div>
-   );
+  );
 };
 
 const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
-   const TableCallBoolean = () => {
-      return flag ? (
+  const TableCallBoolean = () => {
+    return flag ? (
          <Icon name="checkmark" size="big" color={'green'}></Icon>
-      ) : flag === false ? (
+    ) : flag === false ? (
          <Icon name="cancel" size="big" color={'red'}></Icon>
-      ) : (
+    ) : (
          <NoDataLabelCell parentName={'VKInformationPanel'} />
-      );
-   };
-   return <TableCallBoolean />;
+    );
+  };
+  return <TableCallBoolean />;
 };
 
 const TableCellBoolean = React.memo<{ flag: boolean }>(TableCellBooleanFn);

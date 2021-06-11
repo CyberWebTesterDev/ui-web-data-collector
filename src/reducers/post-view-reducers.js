@@ -8,27 +8,27 @@ const initialState = {
 
 export const postViewReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_POSTS_START":
+    case 'FETCH_POSTS_START':
       return {
         ...state,
         isPostsLoading: true,
       };
-    case "FETCH_POSTS_SUCCESS":
+    case 'FETCH_POSTS_SUCCESS':
       return {
         ...state,
         loadedPosts: action.payload,
         isPostsLoaded: true,
         isPostsLoading: false,
       };
-    case "FETCH_POSTS_ERROR":
+    case 'FETCH_POSTS_ERROR':
       return {
         ...state,
         isPostsLoaded: false,
         hasErrorLoadingPosts: true,
       };
-    case "SELECT_POST":
+    case 'SELECT_POST':
       const idx = state.loadedPosts.findIndex(
-        (post) => post.id == action.payload
+        (post) => post.id == action.payload,
       );
       const postSelected =
         idx != -1 ? { ...state.loadedPosts[idx], selected: true } : null;
@@ -50,9 +50,9 @@ export const postViewReducer = (state = initialState, action) => {
             ],
           }
         : { ...state };
-    case "SELECT_CANCEL":
+    case 'SELECT_CANCEL':
       const idx2 = state.loadedPosts.findIndex(
-        (post) => post.id == action.payload
+        (post) => post.id == action.payload,
       );
       const postRemoved =
         idx2 != -1 ? { ...state.loadedPosts[idx2], selected: false } : null;

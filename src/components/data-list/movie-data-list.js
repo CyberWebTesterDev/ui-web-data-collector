@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import withGetDataFromWeb from "../hoc/with-getdata-from-web";
-import { moviesRequested, moviesLoaded } from "../../actions/actions";
-import Spinner from "../spinner/spinner";
-import MovieDetailItem from "../data-detail/movie-detail-item";
+import React from 'react';
+import { connect } from 'react-redux';
+import withGetDataFromWeb from '../hoc/with-getdata-from-web';
+import { moviesRequested, moviesLoaded } from '../../actions/actions';
+import Spinner from '../spinner/spinner';
+import MovieDetailItem from '../data-detail/movie-detail-item';
 
 class MovieDataList extends React.Component {
   getMovies = async () => {
@@ -22,14 +22,14 @@ class MovieDataList extends React.Component {
         this.props.moviesRequested();
         let res = await this.props.getDatafromWeb.getFilmsWithRangeIds(
           from,
-          to
+          to,
         );
         return res;
       } catch (e) {
         throw e;
       }
     } else {
-      alert("Необходимо заполнить поля от и до!");
+      alert('Необходимо заполнить поля от и до!');
       return [{}];
     }
   };
@@ -51,8 +51,8 @@ class MovieDataList extends React.Component {
 
   searchMoviesRange = (e) => {
     e.preventDefault();
-    let x = document.getElementById("fromId").value;
-    let y = document.getElementById("toId").value;
+    let x = document.getElementById('fromId').value;
+    let y = document.getElementById('toId').value;
     this.getMoviesWithRange(x, y).then((res) => {
       this.props.moviesLoaded(res);
     });
@@ -115,5 +115,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withGetDataFromWeb(
-  connect(mapStateToProps, mapDispatchToProps)(MovieDataList)
+  connect(mapStateToProps, mapDispatchToProps)(MovieDataList),
 );

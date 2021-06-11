@@ -29,7 +29,7 @@ Switch отслеживает маршрут и при первом же сов�
 остальные маршруты игнорируются
 */
 const App = () => {
-   return (
+  return (
       <div className="main-container">
          <Header />
          <SpinnerMain />
@@ -75,6 +75,6 @@ const App = () => {
             <Route path="/" component={MainPage} />
          </Switch>
       </div>
-   );
+  );
 };
 export default App;

@@ -1,49 +1,49 @@
 import { createSelector } from 'reselect';
 import {
-   TVKenControlPanel,
-   TVKenControlPanelInitialValue,
+  TVKenControlPanel,
+  TVKenControlPanelInitialValue,
 } from './vk-info-panel-types';
 
 const getInitialFormValues = ({
-   VKenControlPanel,
+  VKenControlPanel,
 }: TVKenControlPanel): TVKenControlPanelInitialValue[] =>
-   VKenControlPanel.initialValues;
+  VKenControlPanel.initialValues;
 
 const getCurrentFormValues = ({ VKenControlPanel }: TVKenControlPanel): TVKenControlPanelInitialValue[] =>
-   VKenControlPanel.currentValues;
+  VKenControlPanel.currentValues;
 
 export const getInitialFormValuesSelector = createSelector(
-   getInitialFormValues,
-   (values): TVKenControlPanelInitialValue[] => values,
+  getInitialFormValues,
+  (values): TVKenControlPanelInitialValue[] => values,
 );
 
 export const getCurrentFormValuesSelector = createSelector(
-   getCurrentFormValues,
-   (values): TVKenControlPanelInitialValue[] => values,
+  getCurrentFormValues,
+  (values): TVKenControlPanelInitialValue[] => values,
 );
 
 export const getCurrentFavoriteCheckBoxValueSelector = createSelector(
-   getCurrentFormValuesSelector,
-   (currentValues) => {
-      if (currentValues.length > 0) {
-         const idx = currentValues.findIndex(
-            (currentValue) => currentValue.fieldName === 'addToFavorite',
-         );
-         if (idx !== -1) {
-            return currentValues.length > 0 && currentValues[0] !== undefined
-               ? currentValues.find(
-                    (
-                       currentValue: TVKenControlPanelInitialValue = {
-                          fieldName: 'default',
-                       },
-                    ) => currentValue.fieldName === 'addToFavorite',
-                 )?.fieldValue
-               : false;
-         } else {
-            return false;
-         }
+  getCurrentFormValuesSelector,
+  (currentValues) => {
+    if (currentValues.length > 0) {
+      const idx = currentValues.findIndex(
+        (currentValue) => currentValue.fieldName === 'addToFavorite',
+      );
+      if (idx !== -1) {
+        return currentValues.length > 0 && currentValues[0] !== undefined
+          ? currentValues.find(
+            (
+              currentValue: TVKenControlPanelInitialValue = {
+                fieldName: 'default',
+              },
+            ) => currentValue.fieldName === 'addToFavorite',
+          )?.fieldValue
+          : false;
       } else {
-         return false;
+        return false;
       }
-   },
+    } else {
+      return false;
+    }
+  },
 );

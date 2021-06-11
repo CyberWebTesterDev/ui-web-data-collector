@@ -9,39 +9,40 @@ import { VkProfileBlockPresentationCompareContainer } from '../styled-forms/vk-f
 import { VKInformationPanel } from './VKInformationPanel';
 import { VKenControlPanel } from './vk-en-control-panel';
 
+// TO DO: THIS OLD COMPONENT TO DELETE
 class ProfileEnrichmentControllerRx extends Component {
-   async componentDidMount() {
-      console.log(
-         `ProfileEnrichmentControllerRx: mounted with props from store: `,
-      );
-      console.log(this.props);
-      const { fetchVKEnrichmentProfile, getVKENDBProfileData } = this.props;
-      const profileId = this.props.match.params.id;
-      if (profileId) {
-         fetchVKEnrichmentProfile(profileId);
-         getVKENDBProfileData(profileId);
-      }
-   }
+  async componentDidMount() {
+    console.log(
+      'ProfileEnrichmentControllerRx: mounted with props from store: ',
+    );
+    console.log(this.props);
+    const { fetchVKEnrichmentProfile, getVKENDBProfileData } = this.props;
+    const profileId = this.props.match.params.id;
+    if (profileId) {
+      fetchVKEnrichmentProfile(profileId);
+      getVKENDBProfileData(profileId);
+    }
+  }
 
-   componentDidUpdate() {
-      console.log(
-         `ProfileEnrichmentControllerRx: updated with props from store: \n`,
-      );
-      console.log(this.props);
-   }
+  componentDidUpdate() {
+    console.log(
+      'ProfileEnrichmentControllerRx: updated with props from store: \n',
+    );
+    console.log(this.props);
+  }
 
-   render() {
-      const {
-         loading,
-         profile,
-         profileInDB,
-      } = this.props.profileEnrichmentData;
-      const { profileControlOptions } = this.props.profileEnrichmentData;
-      return loading ? (
+  render() {
+    let {
+      loading,
+      profile,
+      profileInDB,
+    } = this.props.profileEnrichmentData;
+    const { profileControlOptions } = this.props.profileEnrichmentData;
+    return loading ? (
          <div>Content is loading...</div>
-      ) : isEmpty(profile) ? (
+    ) : isEmpty(profile) ? (
          <div>Profile is empty</div>
-      ) : (
+    ) : (
          <React.Fragment>
             <VKInformationPanel
                profileInDB={profileInDB}
@@ -49,11 +50,11 @@ class ProfileEnrichmentControllerRx extends Component {
             />
             <VkProfileBlockPresentationCompareContainer profile={profile} />
          </React.Fragment>
-      );
-   }
+    );
+  }
 }
 
 const mapStateToProps = ({ profileEnrichmentData }) => {
-   return { profileEnrichmentData };
+  return { profileEnrichmentData };
 };
 export default connect(mapStateToProps, actions)(ProfileEnrichmentControllerRx);

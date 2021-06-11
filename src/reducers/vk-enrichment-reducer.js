@@ -6,16 +6,16 @@ const initialState = {
   profile: {},
   profileInDB: {},
   compareProfileExtendedData: {},
-  popupClassName: "",
+  popupClassName: '',
   loading: false,
-  label: "",
-  label2: "",
-  estimationLabel: "",
+  label: '',
+  label2: '',
+  estimationLabel: '',
   currentEstimation: 0,
   currentCorrEstimation: 0,
   currentHasChildProperty: 0,
   currentIsInRelationShipProperty: 0,
-  local: "",
+  local: '',
 };
 /*Действия:
 FETCH_VK_EN_PROFILE_DATA получение данных о профайле через VK API
@@ -31,13 +31,13 @@ UPDATE_VK_EN_DB_PROFILE_DATA апдейт параметров профайла 
 
 export const vkEnrichmentProfileReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "FETCH_VK_EN_PROFILE_DATA":
+    case 'FETCH_VK_EN_PROFILE_DATA':
       return { ...state, loading: true };
-    case "STOP_LOAD":
+    case 'STOP_LOAD':
       return { ...state, loading: false };
-    case "FETCH_VK_EN_PROFILE_DATA_END_SUCCESS":
+    case 'FETCH_VK_EN_PROFILE_DATA_END_SUCCESS':
       return { ...state, loading: false, profile: action.payload };
-    case "GET_VK_EN_DB_PROFILE_DATA_SUCCESS":
+    case 'GET_VK_EN_DB_PROFILE_DATA_SUCCESS':
       return { ...state, loading: false, profileInDB: action.payload };
     default:
       return state;

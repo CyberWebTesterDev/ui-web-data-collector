@@ -9,8 +9,8 @@ const composeEnhancers =
    compose;
 
 const store = createStore(
-   mainReducer,
-   composeEnhancers(applyMiddleware(logger, getVKProfileById)),
+  mainReducer,
+  composeEnhancers(applyMiddleware(logger, getVKProfileById)),
 );
 
 export default store;

@@ -1,5 +1,5 @@
-import React from "react";
-import ProfileProp from "../items/profile-prop";
+import React from 'react';
+import ProfileProp from '../items/profile-prop';
 
 const ProfilePropsEnrichment = ({ profile }) => {
   let profilePropsArray = [];
@@ -19,7 +19,7 @@ const ProfilePropsEnrichment = ({ profile }) => {
         <div className="profile-details">
           <ProfileProp propName={key} value={profile[key]} />
         </div>
-      </React.Fragment>
+      </React.Fragment>,
     );
   }
   return profilePropsArray;
