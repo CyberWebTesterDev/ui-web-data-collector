@@ -12,9 +12,7 @@ import {
 import { popupHide, popupShow } from '../popups/popup-actions';
 import { TAction, TVKenControlPanel } from './vk-info-panel-types';
 
-class VKenControlPanelController extends React.Component<
-   TVKenControlPanel['VKenControlPanelProps']
-> {
+class VKenControlPanelController extends React.Component<TVKenControlPanel['VKenControlPanelProps']> {
    isChecked = false;
    labels = ['Добавить в избранные'];
 
