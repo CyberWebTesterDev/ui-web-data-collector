@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Button, Checkbox, Icon } from 'semantic-ui-react';
-import { CreateDivBlock, NestedBlock } from '../../utils/bem-helper';
+import { Checkbox, Icon } from 'semantic-ui-react';
+import { CreateDivBlock } from '../../utils/bem-helper';
 import * as actions from '../basic-form-actions/form-actions';
-// @ts-ignore
 import { connect } from 'react-redux';
 import { YearPicker } from './control-elements';
 import {
@@ -11,9 +10,11 @@ import {
    getInitialFormValuesSelector,
 } from './vk-en-selectors';
 import { popupHide, popupShow } from '../popups/popup-actions';
-import { TVKenControlPanel } from "./vk-info-panel-types";
+import { TAction, TVKenControlPanel } from './vk-info-panel-types';
 
-class VKenControlPanelController extends React.Component<TVKenControlPanel> {
+class VKenControlPanelController extends React.Component<
+   TVKenControlPanel['VKenControlPanelProps']
+> {
    isChecked = false;
    labels = ['Добавить в избранные'];
 
@@ -32,7 +33,7 @@ class VKenControlPanelController extends React.Component<TVKenControlPanel> {
       console.log(this.props);
    }
 
-   getFieldValueByName = (fieldName = null) => {
+   getFieldValueByName = (fieldName: string | null = null) => {
       console.log(
          `VKenControlPanelController.getFieldValueByName called with parameter: ${fieldName}`,
       );
@@ -51,10 +52,8 @@ class VKenControlPanelController extends React.Component<TVKenControlPanel> {
       const {
          isEditable,
          updateFormValue,
-         isFormChanged,
          initialValues,
          currentFavoriteCheckBoxValue,
-         popupShow,
       } = this.props;
       return (
          <CreateDivBlock
@@ -86,12 +85,9 @@ class VKenControlPanelController extends React.Component<TVKenControlPanel> {
                }
             />
             <YearPicker
-               fieldValue={
-                  !isFormChanged
-                     ? initialValues[1].fieldValue
-                     : this.getFieldValueByName('yearPicker')
-               }
-               handleOnChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+               handleOnChange={(
+                  e: React.ChangeEvent<HTMLSelectElement>,
+               ): TAction =>
                   updateFormValue('yearPicker', {
                      fieldName: 'yearPicker',
                      fieldValue: e.target.value,
@@ -105,7 +101,7 @@ class VKenControlPanelController extends React.Component<TVKenControlPanel> {
    }
 }
 
-const mapStateToProps = ({ form }) => {
+const mapStateToProps = ({ form }: { form: TVKenControlPanel }) => {
    return {
       initialValues: getInitialFormValuesSelector(form),
       currentValues: getCurrentFormValuesSelector(form),

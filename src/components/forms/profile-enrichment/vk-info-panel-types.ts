@@ -1,3 +1,15 @@
+import { TPopUpActionFunction } from '../../../lib';
+
+export type TFormValue = {
+   fieldName: string;
+   fieldValue: string | boolean;
+};
+
+export type TAction = {
+   type: string;
+   payload?: string | TFormValue;
+};
+
 export type TDivDividerProps = {
    parentClassName: string;
    modifiers: string[];
@@ -18,15 +30,22 @@ export type TVKInformationPanelProps = {
    profileControlOptions: TProfileInDB;
 };
 
-type TVKenControlPanelInitialValue = {
+export type TVKenControlPanelInitialValue = {
    fieldName: string;
-   fieldValue: string | boolean;
+   fieldValue?: boolean;
 };
 
 export type TVKenControlPanel = {
-   VKenControlPanel: {
-      isFormChanged: boolean;
+   VKenControlPanelProps: {
       initialValues: TVKenControlPanelInitialValue[];
       currentValues: [] | TVKenControlPanelInitialValue[];
+      cleanForm: () => TAction;
+      currentFavoriteCheckBoxValue?: boolean;
+      isFormChanged: boolean;
+      isEditable: boolean;
+      updateFormValue: (c: string, f: TFormValue) => TAction;
+      popupShow: TPopUpActionFunction;
+
    };
+   VKenControlPanel: TVKenControlPanel['VKenControlPanelProps'];
 };

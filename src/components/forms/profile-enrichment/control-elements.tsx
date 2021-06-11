@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { TAction } from './vk-info-panel-types';
 
-const YearPickerFn = ({ handleOnChange }: { handleOnChange: () => void }) => {
+const YearPickerFn = ({ handleOnChange }: { handleOnChange: (e: React.ChangeEvent<HTMLSelectElement>) => TAction }) => {
    let years = [];
    for (let i = 0; i < 25; i++) {
       if (i > 0) {

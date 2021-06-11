@@ -9,6 +9,7 @@ interface IDivBlockObject {
    name: string;
    modifiers?: Array<string>;
    other?: ObjectHTMLAttributes<string>;
+   children?: JSX.Element[];
 }
 
 interface INestedBlock {
@@ -18,25 +19,25 @@ interface INestedBlock {
 }
 
 interface IChildElement {
-   parentClassName?: string;
+   parentClassName: string;
    elementName: string;
    modifiers: string[];
-   blockName?: string;
+   blockName: string;
 }
 
 // TO DO
-export const CreateDivBlock = ({
-   name,
-   modifiers = [],
-   ...other
-}: IDivBlockObject): JSX.Element => {
+export const CreateDivBlock = ({ name, modifiers = [] }: IDivBlockObject) => {
    let className = `${prefix}${transformElementName(name)}`;
    if (modifiers.length > 0) {
       modifiers.forEach((modifier) => {
          className += elementNameToModifierDelimiter + modifier;
       });
    }
-   return <div className={className}></div>;
+   return (
+      <>
+         <div className={className}></div>
+      </>
+   );
 };
 export const NestedBlock = ({
    nameParentBlock,
@@ -111,12 +112,11 @@ const transformElementName = (
                splitArrayByUpperCase[idx] = word.toLowerCase();
                break;
             default:
-               break;
+               throw new Error(
+                  `transformElementName: unexpected value of type has been received`,
+               );
          }
       }
    });
    return splitArrayByUpperCase.join('');
-};
-const createModifierName = (key: string, value: string): string => {
-   return transformElementName(key, 'mod') + '_' + value;
 };
