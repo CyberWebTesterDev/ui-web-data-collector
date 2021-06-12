@@ -8,7 +8,6 @@ import {
   Dropdown,
   Button,
 } from 'semantic-ui-react';
-import { setMaxWidth, setWidth } from '../../utils/css-class-util';
 import VKenControlPanelController from './vk-en-control-panel';
 import {
   TDivDividerProps,
