@@ -1,113 +1,113 @@
 import React from 'react';
 import GetDataFromWeb from '../../services/service';
 import {
-   estimateProfile,
-   corrEstimateProfile,
-   setProfileFavorite,
-   setProfileBirthYear,
-   setProfileRelatedProperty,
+  estimateProfile,
+  corrEstimateProfile,
+  setProfileFavorite,
+  setProfileBirthYear,
+  setProfileRelatedProperty,
 } from './profile-enrichment-helper';
 
 export const onClickListenerGetById = (e) => {
-   e.preventDefault();
-   let profileId = document.getElementById('vkid').value;
-   if (profileId === '' || profileId === null || isNaN(profileId)) {
-      alert('Введите ID. Должен содержать цифры');
-      return;
-   }
-   getInfobyId(profileId).then((data) => {
-      console.log(data);
-      return data;
-   });
+  e.preventDefault();
+  let profileId = document.getElementById('vkid').value;
+  if (profileId === '' || profileId === null || isNaN(profileId)) {
+    alert('Введите ID. Должен содержать цифры');
+    return;
+  }
+  getInfobyId(profileId).then((data) => {
+    console.log(data);
+    return data;
+  });
 };
 export const getInfobyId = async (id) => {
-   const gdf = new GetDataFromWeb();
-   const data = await gdf.getProfileInfoById(id);
-   return data;
+  const gdf = new GetDataFromWeb();
+  const data = await gdf.getProfileInfoById(id);
+  return data;
 };
 export const checkProfileInDB = async (profileId) => {
-   if (profileId) {
-      try {
-         let res1 = await GetDataFromWeb.getProfileFromDBStatic(profileId);
-         let res2 = await GetDataFromWeb.getProfileCheckByIdStatic(profileId);
-         GetDataFromWeb.formatDataExtLightStatic(
-            res1,
-            GetDataFromWeb.dateFieldsStatic,
-         );
-         GetDataFromWeb.formatDataExtLightStatic(
-            res2,
-            GetDataFromWeb.dateFieldsStatic,
-         );
-         if (res1.length > 0) {
-            if (res2.length > 0) {
-               return {
-                  hasProfileRow: true,
-                  profileUpdateTime: res1[0].update_time,
-                  hasProfileCheckRow: true,
-                  profileCheckUpdateTime: res2[0].check_update,
-                  isInRelationship: res2[0].is_in_relationship,
-                  estimation: res2[0].estimation,
-                  hasChild: res2[0].has_child,
-                  correlationEst: res2[0].correlation_est,
-               };
-            }
-            return {
-               hasProfileRow: true,
-               profileUpdateTime: res1[0].update_time,
-               hasProfileCheckRow: false,
-            };
-         }
-         return { hasProfileRow: false };
-      } catch (e) {
-         throw Error(e);
+  if (profileId) {
+    try {
+      let res1 = await GetDataFromWeb.getProfileFromDBStatic(profileId);
+      let res2 = await GetDataFromWeb.getProfileCheckByIdStatic(profileId);
+      GetDataFromWeb.formatDataExtLightStatic(
+        res1,
+        GetDataFromWeb.dateFieldsStatic,
+      );
+      GetDataFromWeb.formatDataExtLightStatic(
+        res2,
+        GetDataFromWeb.dateFieldsStatic,
+      );
+      if (res1.length > 0) {
+        if (res2.length > 0) {
+          return {
+            hasProfileRow: true,
+            profileUpdateTime: res1[0].update_time,
+            hasProfileCheckRow: true,
+            profileCheckUpdateTime: res2[0].check_update,
+            isInRelationship: res2[0].is_in_relationship,
+            estimation: res2[0].estimation,
+            hasChild: res2[0].has_child,
+            correlationEst: res2[0].correlation_est,
+          };
+        }
+        return {
+          hasProfileRow: true,
+          profileUpdateTime: res1[0].update_time,
+          hasProfileCheckRow: false,
+        };
       }
-   }
+      return { hasProfileRow: false };
+    } catch (e) {
+      throw Error(e);
+    }
+  }
 };
 export const getProfileDataExtended = async (profileId) => {
-   if (profileId) {
-      try {
-         let res = await GetDataFromWeb.getProfileDataExtendedStatic(profileId);
-         GetDataFromWeb.formatDataExtLightStatic(
-            res,
-            GetDataFromWeb.dateFieldsStatic,
-         );
-         if (res.length > 0) {
-            return res;
-         }
-         return res;
-      } catch (e) {
-         throw Error(e);
+  if (profileId) {
+    try {
+      let res = await GetDataFromWeb.getProfileDataExtendedStatic(profileId);
+      GetDataFromWeb.formatDataExtLightStatic(
+        res,
+        GetDataFromWeb.dateFieldsStatic,
+      );
+      if (res.length > 0) {
+        return res;
       }
-   }
+      return res;
+    } catch (e) {
+      throw Error(e);
+    }
+  }
 };
 export const SetFavoriteButton = ({
-   bool,
-   id,
-   buttonLabel,
-   setPopupClassName,
-   showPopupFunc,
+  bool,
+  id,
+  buttonLabel,
+  setPopupClassName,
+  showPopupFunc,
 }) => {
-   return (
+  return (
       <div id="controlPanel">
          <button
             className="btn-primary"
             onClick={() =>
-               setProfileFavorite(bool, id, setPopupClassName, showPopupFunc)
+              setProfileFavorite(bool, id, setPopupClassName, showPopupFunc)
             }
          >
             {buttonLabel}
          </button>
       </div>
-   );
+  );
 };
 export const IsRelatedPropertySelector = ({ profileId }) => {
-   return (
+  return (
       <label>
          Была/есть какая-либо личная связь?
          <select
             value=""
             onChange={(e) => {
-               setProfileRelatedProperty(e, profileId);
+              setProfileRelatedProperty(e, profileId);
             }}
          >
             <option value="0">-</option>
@@ -115,30 +115,30 @@ export const IsRelatedPropertySelector = ({ profileId }) => {
             <option value="false">Нет</option>
          </select>
       </label>
-   );
+  );
 };
 export const ProfileEstimation = ({
-   stateProfileId,
-   stateCurrentEstimation,
-   setStateFunc,
-   setPopupClassName,
-   showPopupFunc,
-   syncFunc,
+  stateProfileId,
+  stateCurrentEstimation,
+  setStateFunc,
+  setPopupClassName,
+  showPopupFunc,
+  syncFunc,
 }) => {
-   return (
+  return (
       <label>
          Оцените профайл:
          <select
             value={stateCurrentEstimation}
             onChange={(e) =>
-               estimateProfile(
-                  e,
-                  stateProfileId,
-                  setStateFunc,
-                  setPopupClassName,
-                  showPopupFunc,
-                  syncFunc,
-               )
+              estimateProfile(
+                e,
+                stateProfileId,
+                setStateFunc,
+                setPopupClassName,
+                showPopupFunc,
+                syncFunc,
+              )
             }
          >
             <option value="0">0</option>
@@ -157,28 +157,28 @@ export const ProfileEstimation = ({
             <option value="10">10</option>
          </select>
       </label>
-   );
+  );
 };
 export const ProfileYearSetComponent = ({
-   stateProfileId,
-   setStateFunc,
-   setPopupClassName,
-   showPopupFunc,
-   syncFunc,
+  stateProfileId,
+  setStateFunc,
+  setPopupClassName,
+  showPopupFunc,
+  syncFunc,
 }) => {
-   return (
+  return (
       <label>
          Укажите год рождения:
          <select
             value="-"
             onChange={(e) =>
-               setProfileBirthYear(
-                  e,
-                  stateProfileId,
-                  setPopupClassName,
-                  showPopupFunc,
-                  syncFunc,
-               )
+              setProfileBirthYear(
+                e,
+                stateProfileId,
+                setPopupClassName,
+                showPopupFunc,
+                syncFunc,
+              )
             }
          >
             <option value="0">-</option>
@@ -202,29 +202,29 @@ export const ProfileYearSetComponent = ({
             <option value="2002">2002</option>
          </select>
       </label>
-   );
+  );
 };
 export const ProfileCorrEstimation = ({
-   stateProfileId,
-   stateCurrentCorrEstimation,
-   setStateFunc,
-   setPopupClassName,
-   showPopupFunc,
+  stateProfileId,
+  stateCurrentCorrEstimation,
+  setStateFunc,
+  setPopupClassName,
+  showPopupFunc,
 }) => {
-   return (
+  return (
       <label>
          Оцените вероятность отношений:
          <select
             className="select-rating-correlation"
             value={stateCurrentCorrEstimation}
             onChange={(e) =>
-               corrEstimateProfile(
-                  e,
-                  stateProfileId,
-                  setStateFunc,
-                  setPopupClassName,
-                  showPopupFunc,
-               )
+              corrEstimateProfile(
+                e,
+                stateProfileId,
+                setStateFunc,
+                setPopupClassName,
+                showPopupFunc,
+              )
             }
          >
             <option value="0">-</option>
@@ -243,10 +243,10 @@ export const ProfileCorrEstimation = ({
             <option value="0.9">0.9</option>
          </select>
       </label>
-   );
+  );
 };
 export const HasChildProperty = (props) => {
-   return (
+  return (
       <label>
          Есть ребенок/дети?:
          <select
@@ -258,10 +258,10 @@ export const HasChildProperty = (props) => {
             <option value="false">Нет</option>
          </select>
       </label>
-   );
+  );
 };
 export const IsInRelationshipProperty = (props) => {
-   return (
+  return (
       <label>
          Состоит в отношениях?
          <select
@@ -273,5 +273,5 @@ export const IsInRelationshipProperty = (props) => {
             <option value="false">Нет</option>
          </select>
       </label>
-   );
+  );
 };

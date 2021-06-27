@@ -1,6 +1,6 @@
-import React from "react";
-import TestPostSaveForm from "../forms/db-integration-form";
-import { Link } from "react-router-dom";
+import React from 'react';
+import TestPostSaveForm from '../forms/db-integration-form';
+import { Link } from 'react-router-dom';
 
 const DataBaseWorkPage = () => {
   return (

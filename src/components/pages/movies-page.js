@@ -1,5 +1,5 @@
-import React from "react";
-import MovieDataList from "../data-list/movie-data-list";
+import React from 'react';
+import MovieDataList from '../data-list/movie-data-list';
 
 const MoviesPage = () => {
   return (

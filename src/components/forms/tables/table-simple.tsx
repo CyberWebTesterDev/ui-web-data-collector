@@ -1,39 +1,39 @@
 import * as React from 'react';
 import {
-   columnNamesMatchProfilesMap,
-   keysProfileToExcludeInTable,
+  columnNamesMatchProfilesMap,
+  keysProfileToExcludeInTable,
 } from '../../helpers/column-names-mapper';
-import { omit, keys, values } from 'lodash';
+import { omit, values } from 'lodash';
 
 type TData = {
-   data: [];
+  data: [];
 };
 export const TableAssembler = ({ data }: TData): boolean | JSX.Element => {
-   if (data.length < 1) {
-      return false;
-   }
-   let idx = 0;
-   data.forEach((item, i) => {
-      if (item) {
-         idx = i;
-         return;
-      }
-   });
-   return (
+  if (data.length < 1) {
+    return false;
+  }
+  let idx = 0;
+  data.forEach((item, i) => {
+    if (item) {
+      idx = i;
+      return;
+    }
+  });
+  return (
       <table className="table">
          <TableHeadSimple item={data[idx]} />
          <TableBodySimple data={data} />
       </table>
-   );
+  );
 };
 const TableHeadSimple = ({ item }) => {
-   let mappedKeys = [];
-   if (item) {
-      for (let key in omit(item, keysProfileToExcludeInTable)) {
-         mappedKeys.push(columnNamesMatchProfilesMap[key]);
-      }
-   }
-   return (
+  let mappedKeys = [];
+  if (item) {
+    for (let key in omit(item, keysProfileToExcludeInTable)) {
+      mappedKeys.push(columnNamesMatchProfilesMap[key]);
+    }
+  }
+  return (
       <thead>
          <tr key={item.id}>
             {' '}
@@ -42,25 +42,25 @@ const TableHeadSimple = ({ item }) => {
             ))}
          </tr>
       </thead>
-   );
+  );
 };
 type TTableBodySimpleProps = {
-   item: string;
+  item: string;
 };
-const TableBodySimple = ({ data }): React.FunctionComponent<TTableBodySimpleProps> => {
-   let trs = data.map((item) => {
-      if (item) {
-         return (
+const TableBodySimple = ({ data }) => {
+  let trs = data.map((item) => {
+    if (item) {
+      return (
             <tr>
                <TdSimple item={item} />
             </tr>
-         );
-      }
-   });
-   return <tbody>{trs}</tbody>;
+      );
+    }
+  });
+  return <tbody>{trs}</tbody>;
 };
-const TdSimple = ({ item }): JSX.Element[] => {
-   return values(omit(item, keysProfileToExcludeInTable)).map((value) => (
+const TdSimple = ({ item }) => {
+  return values(omit(item, keysProfileToExcludeInTable)).map((value) => (
       <td>{value}</td>
-   ));
+  ));
 };

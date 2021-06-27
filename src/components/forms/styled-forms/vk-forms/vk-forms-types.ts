@@ -9,7 +9,7 @@ type TProfile = {
   photo_100: string;
   vk_id: string;
   photo_max: string;
-  [key: string]: string;
+  [key: string]: string | number | boolean | undefined
 };
 export type TImageProp = {
   label: string;
@@ -20,6 +20,6 @@ export type TVKid = {
 }
 export type TPropertyStructure = {
   propertyName: string;
-  value?: boolean | string;
+  value?: boolean | string | number;
   link?: string;
 }

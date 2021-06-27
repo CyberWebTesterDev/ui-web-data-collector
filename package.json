@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "babel-loader": "^8.1.0",
+    "babel-plugin-react-css-modules": "^5.2.6",
     "babel-plugin-transform-remove-strict-mode": "0.0.2",
     "css-loader": "^3.4.2",
     "eslint": "^7.26.0",

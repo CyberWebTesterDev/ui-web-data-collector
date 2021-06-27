@@ -5,13 +5,13 @@ import {
   VkPropFieldPhotoLinks,
   VkPropFieldStandard,
 } from './vk-prop-fields';
-import type { TProfileRequest } from './vk-forms-types';
+import { TProfileRequest } from './vk-forms-types';
 
 export const VkMainPropsContainer = ({
   profile,
-}: TProfileRequest): React.ReactFragment => {
+}: TProfileRequest) => {
   return (
-      <React.Fragment>
+      <>
          <div className="main-parent-block">
             <VkPropFieldHeadLabel
                label={profile.first_name + ' ' + profile.last_name}
@@ -20,7 +20,7 @@ export const VkMainPropsContainer = ({
             <VkPropFieldID id={profile.id} />
             <PropsRenderer profile={profile} />
          </div>
-      </React.Fragment>
+      </>
   );
 };
 export const VkOtherPropsContainer = ({

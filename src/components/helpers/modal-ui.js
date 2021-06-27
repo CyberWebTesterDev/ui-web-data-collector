@@ -2,24 +2,24 @@ import React from 'react';
 import { dateParser } from '../../services/helper';
 
 export const showModal = (setFunc) => {
-   setFunc(true);
+  setFunc(true);
 };
 export const closeModal = (setFunc) => {
-   setFunc(false);
+  setFunc(false);
 };
 export const ModalUi = (props) => {
-   if (props.visible) {
-      return (
+  if (props.visible) {
+    return (
          <div className="modal-parent dimmer">
             <div className="modal visible-block">Модальное окно</div>
          </div>
-      );
-   }
-   return false;
+    );
+  }
+  return false;
 };
 export const ModalWithButton = (props) => {
-   if (props.visible) {
-      return (
+  if (props.visible) {
+    return (
          <div className="modal-parent dimmer">
             <div className="modal visible-block">
                Модальное окно
@@ -31,13 +31,13 @@ export const ModalWithButton = (props) => {
                </button>
             </div>
          </div>
-      );
-   }
-   return false;
+    );
+  }
+  return false;
 };
 export const ModalWithButtonDarkLarge = (props) => {
-   if (props.visible) {
-      return (
+  if (props.visible) {
+    return (
          <div className="modal-parent-large dimmer-modal">
             <div className="modal-dark-gray-large visible-block">
                <label className="modal-label">Большое модальное окно</label>
@@ -50,13 +50,13 @@ export const ModalWithButtonDarkLarge = (props) => {
                </button>
             </div>
          </div>
-      );
-   }
-   return false;
+    );
+  }
+  return false;
 };
 export const ModalWithButtonDarkLargeForPost = (props) => {
-   if (props.visible) {
-      return (
+  if (props.visible) {
+    return (
          <div className="modal-parent-large dimmer-modal">
             <div className="modal-post-dark-gray-large visible-block">
                <label className="modal-label">{props.label}</label>
@@ -73,13 +73,13 @@ export const ModalWithButtonDarkLargeForPost = (props) => {
                </button>
             </div>
          </div>
-      );
-   }
-   return false;
+    );
+  }
+  return false;
 };
 export const ModalWithButtonDarkLargeFlexible = (props) => {
-   if (props.visible) {
-      return (
+  if (props.visible) {
+    return (
          <div className="modal-parent-large dimmer-modal">
             <div className={props.className}>
                <label className="modal-label">Большое модальное окно</label>
@@ -92,7 +92,7 @@ export const ModalWithButtonDarkLargeFlexible = (props) => {
                </button>
             </div>
          </div>
-      );
-   }
-   return false;
+    );
+  }
+  return false;
 };

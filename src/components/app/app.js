@@ -24,6 +24,7 @@ import GetMatchesFormController from '../forms/vk-search-matches-refactor';
 import { PopupMain } from '../forms/popups/popup-controller';
 import ViewPostsController from '../forms/posts-view/db-view-form-controller-refactor';
 import ProfileEnrichmentControllerRx from '../forms/profile-enrichment/profile-enrichment-controller-refactor';
+import { VKSearchMatchedProfilesComponent } from '../forms/vk/vk-search-matches-controller';
 /*
 Switch отслеживает маршрут и при первом же совпадении
 остальные маршруты игнорируются
@@ -66,7 +67,7 @@ const App = () => {
             />
             <Route
                path="/vkdata/search-matches-test"
-               component={GetMatchesFormController}
+               component={VKSearchMatchedProfilesComponent}
             />
             <Route path="/test-styles/:id?" component={TestArticlePage} />
             {/*<Route path="/test-styles/:id?">*/}

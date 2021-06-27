@@ -12,8 +12,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "noImplicitReturns": true
-    // "noEmitOnError": true
+    "noImplicitReturns": true,
+    //"noEmitOnError": true
   },
   "include": [
     "next-env.d.ts",

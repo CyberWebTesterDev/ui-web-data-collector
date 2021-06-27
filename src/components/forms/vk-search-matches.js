@@ -6,230 +6,230 @@ import ProfileMatchesDummy from '../data-detail/profile-matches-dummy';
 import Spinner from '../spinner/spinner';
 import { PopupFlexConfProd, showPopup } from '../helpers/popup-util';
 import {
-   getLocalStorageItem,
-   setLocalStorageItem,
+  getLocalStorageItem,
+  setLocalStorageItem,
 } from '../utils/local-storage-util';
 import * as mc from '../helpers/main-constants';
 //старая реализация функции с хуками
 const GetMatchesByQuery = ({ caller }) => {
-   console.log(`GetMatchesByQuery has been called. Caller is: ${caller}`);
-   const GDF = new GetDataFromWeb();
-   const [isAfterRequest, setLoadState] = useState(false);
-   const [matches, setMatches] = useState([[]]);
-   const [loading, setLoading] = useState(false);
-   const [popUpType, setPopUpType] = useState();
-   const [arrayValues, setArrayVals] = useState([]);
-   const [currentOffset, setOffset] = useState(null);
-   const [controlledRowId, setControlledRowId] = useState(null);
-   const [results, setResults] = useState(null);
-   const useIsMounted = () => {
-      const isMounted = useRef(false);
-      useEffect(() => {
-         isMounted.current = true;
-         return () => (isMounted.current = false);
-      }, []);
-      return isMounted;
-   };
-   const isMountedComp = useIsMounted();
-   const getMatches = async () => {
-      let query = document.getElementById('vkquery').value;
-      let qnt = document.getElementById('vkquantity').value;
-      let offset = document.getElementById('vkoffset').value;
-      let ageFrom = document.getElementById('vkagefrom').value;
-      let ageTo = document.getElementById('vkageto').value;
-      let pickedCity = document.getElementById('city').value;
-      let pickedMonth = document.getElementById('month').value;
-      let pickedYear = document.getElementById('year').value;
-      let pickedDay = document.getElementById('day').value;
-      console.log(query);
-      if (pickedYear && pickedYear !== 'null') {
-         //console.log(`pickedYear must be TRUE: ${pickedYear}(${typeof pickedYear})`);
-         ageFrom = '0';
-         ageTo = '0';
-      } else {
-         //console.log(`pickedYear must be FALSE: ${pickedYear}(${typeof pickedYear})`);
-         ageFrom ? (ageFrom = ageFrom) : (ageFrom = '20');
-         ageTo ? (ageTo = ageTo) : (ageTo = '36');
-      }
-      offset ? (offset = offset) : (offset = '0');
-      query ? (query = query) : (query = null);
-      qnt ? (qnt = qnt) : (qnt = '0');
-      offset ? (offset = offset) : (offset = '0');
-      setOffset(offset);
-      pickedCity === '0' ? (pickedCity = null) : pickedCity;
-      setLoading(true);
-      setLocalStorageItem('searchParams', {
-         dateSearch: new Date(),
-         queryString: query,
-         quantity: qnt,
-         offset: offset,
-         pickedCity,
-         ageFrom,
-         ageTo,
-         pickedYear,
-         pickedDay,
-         pickedMonth,
-      });
-      let data = await GDF.getMatchProfilesByQuery(
-         query,
-         qnt,
-         offset,
-         ageFrom,
-         ageTo,
-         pickedCity,
-         pickedYear,
-         pickedMonth,
-         pickedDay,
-      );
-      let data2 = await GDF.getAllCheckedProfiles();
-      setLoadState(true);
-      setLoading(false);
-      //console.log(data);
-      //console.log(data2);
-      setMatches([data, data2]);
-      console.log(matches[0]);
-      console.log(matches[1]);
-      console.log(
-         'GetMatchesByQuery received data from getMatchProfilesByQuery',
-      );
-      console.log('GetMatchesByQuery: setCheckedMatches has set array: ');
-      showPopup(mc.POPUP_CONTAINER_BOTTOM_RIGHT, setPopUpType, 3000);
-   };
-   const onPickedYear = () => {
-      if (document.getElementById('year').value !== 'null') {
-         document.getElementById('vkagefrom').classList.add('disabled-input');
-         document.getElementById('vkageto').classList.add('disabled-input');
-      } else if (
-         document.getElementById('vkagefrom').className &&
+  console.log(`GetMatchesByQuery has been called. Caller is: ${caller}`);
+  const GDF = new GetDataFromWeb();
+  const [isAfterRequest, setLoadState] = useState(false);
+  const [matches, setMatches] = useState([[]]);
+  const [loading, setLoading] = useState(false);
+  const [popUpType, setPopUpType] = useState();
+  const [arrayValues, setArrayVals] = useState([]);
+  const [currentOffset, setOffset] = useState(null);
+  const [controlledRowId, setControlledRowId] = useState(null);
+  const [results, setResults] = useState(null);
+  const useIsMounted = () => {
+    const isMounted = useRef(false);
+    useEffect(() => {
+      isMounted.current = true;
+      return () => (isMounted.current = false);
+    }, []);
+    return isMounted;
+  };
+  const isMountedComp = useIsMounted();
+  const getMatches = async () => {
+    let query = document.getElementById('vkquery').value;
+    let qnt = document.getElementById('vkquantity').value;
+    let offset = document.getElementById('vkoffset').value;
+    let ageFrom = document.getElementById('vkagefrom').value;
+    let ageTo = document.getElementById('vkageto').value;
+    let pickedCity = document.getElementById('city').value;
+    let pickedMonth = document.getElementById('month').value;
+    let pickedYear = document.getElementById('year').value;
+    let pickedDay = document.getElementById('day').value;
+    console.log(query);
+    if (pickedYear && pickedYear !== 'null') {
+      //console.log(`pickedYear must be TRUE: ${pickedYear}(${typeof pickedYear})`);
+      ageFrom = '0';
+      ageTo = '0';
+    } else {
+      //console.log(`pickedYear must be FALSE: ${pickedYear}(${typeof pickedYear})`);
+      ageFrom ? (ageFrom = ageFrom) : (ageFrom = '20');
+      ageTo ? (ageTo = ageTo) : (ageTo = '36');
+    }
+    offset ? (offset = offset) : (offset = '0');
+    query ? (query = query) : (query = null);
+    qnt ? (qnt = qnt) : (qnt = '0');
+    offset ? (offset = offset) : (offset = '0');
+    setOffset(offset);
+    pickedCity === '0' ? (pickedCity = null) : pickedCity;
+    setLoading(true);
+    setLocalStorageItem('searchParams', {
+      dateSearch: new Date(),
+      queryString: query,
+      quantity: qnt,
+      offset: offset,
+      pickedCity,
+      ageFrom,
+      ageTo,
+      pickedYear,
+      pickedDay,
+      pickedMonth,
+    });
+    let data = await GDF.getMatchProfilesByQuery(
+      query,
+      qnt,
+      offset,
+      ageFrom,
+      ageTo,
+      pickedCity,
+      pickedYear,
+      pickedMonth,
+      pickedDay,
+    );
+    let data2 = await GDF.getAllCheckedProfiles();
+    setLoadState(true);
+    setLoading(false);
+    //console.log(data);
+    //console.log(data2);
+    setMatches([data, data2]);
+    console.log(matches[0]);
+    console.log(matches[1]);
+    console.log(
+      'GetMatchesByQuery received data from getMatchProfilesByQuery',
+    );
+    console.log('GetMatchesByQuery: setCheckedMatches has set array: ');
+    showPopup(mc.POPUP_CONTAINER_BOTTOM_RIGHT, setPopUpType, 3000);
+  };
+  const onPickedYear = () => {
+    if (document.getElementById('year').value !== 'null') {
+      document.getElementById('vkagefrom').classList.add('disabled-input');
+      document.getElementById('vkageto').classList.add('disabled-input');
+    } else if (
+      document.getElementById('vkagefrom').className &&
          document.getElementById('vkageto').className
-      ) {
-         document
-            .getElementById('vkagefrom')
-            .classList.remove('disabled-input');
-         document.getElementById('vkageto').classList.remove('disabled-input');
-      }
-   };
-   const onChangeAge = (e) => {
-      if (e.target.value) {
-         document.getElementById('year').value = 'null';
-         document.getElementById('year').disabled = true;
-      } else {
-         document.getElementById('year').disabled = false;
-      }
-   };
-   const checkProfile = async (id, firstName, lastName) => {
-      let searchParams;
-      try {
-         searchParams = JSON.parse(getLocalStorageItem('searchParams'));
-         console.log(`checkProfile: Received search params:`);
-         console.log(searchParams);
-         let result;
-         searchParams.pickedYear
-            ? (result = await GDF.insertUpdateCheckedProfile(
-                 id,
-                 firstName,
-                 lastName,
-                 searchParams.pickedYear,
-              ))
-            : (result = await GDF.insertUpdateCheckedProfile(
-                 id,
-                 firstName,
-                 lastName,
-              ));
-         if (result.rowCount) {
-            console.log(
+    ) {
+      document
+        .getElementById('vkagefrom')
+        .classList.remove('disabled-input');
+      document.getElementById('vkageto').classList.remove('disabled-input');
+    }
+  };
+  const onChangeAge = (e) => {
+    if (e.target.value) {
+      document.getElementById('year').value = 'null';
+      document.getElementById('year').disabled = true;
+    } else {
+      document.getElementById('year').disabled = false;
+    }
+  };
+  const checkProfile = async (id, firstName, lastName) => {
+    let searchParams;
+    try {
+      searchParams = JSON.parse(getLocalStorageItem('searchParams'));
+      console.log('checkProfile: Received search params:');
+      console.log(searchParams);
+      let result;
+      searchParams.pickedYear
+        ? (result = await GDF.insertUpdateCheckedProfile(
+            id,
+            firstName,
+            lastName,
+            searchParams.pickedYear,
+          ))
+        : (result = await GDF.insertUpdateCheckedProfile(
+            id,
+            firstName,
+            lastName,
+          ));
+      if (result.rowCount) {
+        console.log(
                `GetMatchesByQuery.useEffect: check has been successfully saved for: ${id}`,
-            );
-            return result;
-         } else {
-            console.warn(
+        );
+        return result;
+      } else {
+        console.warn(
                `GetMatchesByQuery.useEffect: check has not been saved for profile: ${id}`,
-            );
-            return result;
-         }
-      } catch (e) {
-         console.error(
+        );
+        return result;
+      }
+    } catch (e) {
+      console.error(
             `GetMatchesByQuery.useEffect: received error while saving check for profile: ${id}`,
-         );
-         throw Error(`checkProfile: ${e}`);
-      }
-   };
-   useEffect(() => {
-      console.log(`useEffect as componentDidMount`);
-      if (controlledRowId) {
-         setControlledRowId(null);
-      }
-   }, []);
-   useLayoutEffect(() => {
-      console.log(`GetMatchesByQuery: useEffect event`);
-      if (arrayValues[0]) {
-         if (!controlledRowId) {
-            console.log(
-               `GetMatchesByQuery.useEffect: starting to save checked profile`,
-            );
-            checkProfile(arrayValues[0], arrayValues[1], arrayValues[2])
-               .then((res) => {
-                  if (isMountedComp) {
-                     console.log(
+      );
+      throw Error(`checkProfile: ${e}`);
+    }
+  };
+  useEffect(() => {
+    console.log('useEffect as componentDidMount');
+    if (controlledRowId) {
+      setControlledRowId(null);
+    }
+  }, []);
+  useLayoutEffect(() => {
+    console.log('GetMatchesByQuery: useEffect event');
+    if (arrayValues[0]) {
+      if (!controlledRowId) {
+        console.log(
+          'GetMatchesByQuery.useEffect: starting to save checked profile',
+        );
+        checkProfile(arrayValues[0], arrayValues[1], arrayValues[2])
+          .then((res) => {
+            if (isMountedComp) {
+              console.log(
                         `GetMatchesByQuery.useEffect clickedRowId: ${arrayValues[0]}`,
-                     );
-                     console.log(
+              );
+              console.log(
                         `GetMatchesByQuery.useEffect type of clickedRowId: ${typeof arrayValues[0]}`,
-                     );
-                     setControlledRowId(arrayValues[0]);
-                     document.getElementById(
-                        arrayValues[0],
-                     ).firstChild.innerText = 'Нажата: ';
-                     document.getElementById(
-                        arrayValues[0],
-                     ).style.backgroundColor = 'blue';
-                     document.getElementById(arrayValues[0]).style.boxShadow =
+              );
+              setControlledRowId(arrayValues[0]);
+              document.getElementById(
+                arrayValues[0],
+              ).firstChild.innerText = 'Нажата: ';
+              document.getElementById(
+                arrayValues[0],
+              ).style.backgroundColor = 'blue';
+              document.getElementById(arrayValues[0]).style.boxShadow =
                         '0 0 7px white';
-                  }
-               })
-               .catch((e) => {
-                  console.error(e);
-               });
-         } else {
-            console.log(
+            }
+          })
+          .catch((e) => {
+            console.error(e);
+          });
+      } else {
+        console.log(
                `GetMatchesByQuery.useEffect: starting to save checked profile: ${arrayValues[0]}, ${arrayValues[1]}, ${arrayValues[2]}`,
-            );
-            checkProfile(arrayValues[0], arrayValues[1], arrayValues[2])
-               .then((res) => {
-                  setControlledRowId(arrayValues[0]);
-                  console.log(
+        );
+        checkProfile(arrayValues[0], arrayValues[1], arrayValues[2])
+          .then((res) => {
+            setControlledRowId(arrayValues[0]);
+            console.log(
                      `GetMatchesByQuery.useEffect controlledRowId: ${controlledRowId}`,
-                  );
-                  console.log(
+            );
+            console.log(
                      `GetMatchesByQuery.useEffect clickedRowId: ${arrayValues[0]}`,
-                  );
-                  document.getElementById(
-                     controlledRowId,
-                  ).style.backgroundColor = '';
-                  document.getElementById(
-                     controlledRowId,
-                  ).firstChild.innerText = 'Ранее была нажата:';
-                  document.getElementById(arrayValues[0]).firstChild.innerText =
+            );
+            document.getElementById(
+              controlledRowId,
+            ).style.backgroundColor = '';
+            document.getElementById(
+              controlledRowId,
+            ).firstChild.innerText = 'Ранее была нажата:';
+            document.getElementById(arrayValues[0]).firstChild.innerText =
                      'Сейчас Нажата: ';
-                  document.getElementById(
-                     arrayValues[0],
-                  ).style.backgroundColor = 'blue';
-                  document.getElementById(arrayValues[0]).style.boxShadow =
+            document.getElementById(
+              arrayValues[0],
+            ).style.backgroundColor = 'blue';
+            document.getElementById(arrayValues[0]).style.boxShadow =
                      '0 0 7px white';
-               })
-               .catch((e) => {
-                  console.error(e);
-               });
-         }
+          })
+          .catch((e) => {
+            console.error(e);
+          });
       }
-      return () => false;
-   }, [arrayValues[0]]);
-   const RenderForm = () => {
-      let daysSelectOption = [];
-      for (let i = 1; i <= 31; i++) {
-         daysSelectOption.push(<option value={`${i}`}> {i} </option>);
-      }
-      return (
+    }
+    return () => false;
+  }, [arrayValues[0]]);
+  const RenderForm = () => {
+    let daysSelectOption = [];
+    for (let i = 1; i <= 31; i++) {
+      daysSelectOption.push(<option value={`${i}`}> {i} </option>);
+    }
+    return (
          <React.Fragment>
             <label>
                Данные поиска самого свежего нажатия кнопки "подобрать
@@ -331,28 +331,28 @@ const GetMatchesByQuery = ({ caller }) => {
                </button>
             </div>
          </React.Fragment>
-      );
-   };
-   if (loading) {
-      console.log(`Condition loading is true for rendering`);
-      return (
+    );
+  };
+  if (loading) {
+    console.log('Condition loading is true for rendering');
+    return (
          <div className="loading-text">
             Ожидание получения данных от сервера Web Scraper...
             {/*<Spinner requestName={'SearchProfilesMatchesVK'} />*/}
          </div>
-      );
-   }
-   if (isAfterRequest && matches.length === 0) {
-      console.log(
-         `Condition isAfterRequest && matches.length === 0 is true for rendering`,
-      );
-      return (
+    );
+  }
+  if (isAfterRequest && matches.length === 0) {
+    console.log(
+      'Condition isAfterRequest && matches.length === 0 is true for rendering',
+    );
+    return (
          <React.Fragment>
             <RenderForm />
             {currentOffset && <h3>Текущий offset поиска: {currentOffset}</h3>}
             <div className="vk-page-text">Не найдено подходящих</div>
             <div className="profile-info-block">
-               {/* <table class="table"> 
+               {/* <table class="table">
                     <ProfileMatchesDummy />
                 </table> */}
             </div>
@@ -361,25 +361,25 @@ const GetMatchesByQuery = ({ caller }) => {
                text={mc.POPUP_MESSAGE_SUCCESS_NOT_FOUND_VK_MATCHES}
             />
          </React.Fragment>
-      );
-   }
-   if (!isAfterRequest && matches.length === 0) {
-      console.log(
-         `Condition !isAfterRequest && matches.length === 0 is true for rendering`,
-      );
-      return (
+    );
+  }
+  if (!isAfterRequest && matches.length === 0) {
+    console.log(
+      'Condition !isAfterRequest && matches.length === 0 is true for rendering',
+    );
+    return (
          <React.Fragment>
             {currentOffset && <h3>Текущий offset поиска: {currentOffset}</h3>}
             <RenderForm />
             <div className="profile-info-block"></div>
          </React.Fragment>
-      );
-   }
-   if (isAfterRequest && matches.length > 0) {
-      console.log(
-         `Condition isAfterRequest && matches.length > 0 is true for rendering`,
-      );
-      return (
+    );
+  }
+  if (isAfterRequest && matches.length > 0) {
+    console.log(
+      'Condition isAfterRequest && matches.length > 0 is true for rendering',
+    );
+    return (
          <React.Fragment>
             <RenderForm />
             <div className="profile-info-block">
@@ -420,13 +420,13 @@ const GetMatchesByQuery = ({ caller }) => {
                text={mc.POPUP_MESSAGE_SUCCESS_LOAD_VK_MATCHES}
             />
          </React.Fragment>
-      );
-   }
-   return (
+    );
+  }
+  return (
       <React.Fragment>
          <RenderForm />
          <div className="profile-info-block"></div>
       </React.Fragment>
-   );
+  );
 };
 export default GetMatchesByQuery;

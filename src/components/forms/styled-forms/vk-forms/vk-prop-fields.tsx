@@ -1,29 +1,28 @@
 import * as React from 'react';
 import './styled.css';
-import { getBlobFromUrl } from '../../../utils/binary-util';
 import type { TImageProp, TPropertyStructure, TVKid } from './vk-forms-types';
 
 export const VkPropFieldHeadLabel = (props: TImageProp): JSX.Element => {
-   // const image = new Image();
-   // image.src = props.imgSrc;
-   // const ShowImage = image.onload = () => <img src={image.src}/>;
-   // getBlobFromUrl(props.imgSrc).then( (blob) => {
-   //     //alert('blob данные изображения получены!');
-   //     const img = document.getElementById('avatar_img');
-   //     const objURL = URL.createObjectURL(blob);
-   //     img.src = objURL;
-   // })
-   return (
+  // const image = new Image();
+  // image.src = props.imgSrc;
+  // const ShowImage = image.onload = () => <img src={image.src}/>;
+  // getBlobFromUrl(props.imgSrc).then( (blob) => {
+  //     //alert('blob данные изображения получены!');
+  //     const img = document.getElementById('avatar_img');
+  //     const objURL = URL.createObjectURL(blob);
+  //     img.src = objURL;
+  // })
+  return (
       <React.Fragment>
          <label className="head-label"> {props.label} </label>
          <div className="image-container">
             <img src={props.imgSrc} />
          </div>
       </React.Fragment>
-   );
+  );
 };
 export const VkPropFieldID = ({ id }: TVKid): JSX.Element => {
-   return (
+  return (
       <React.Fragment>
          <div className="property-child-block">
             <div className="label-div">ID</div>
@@ -34,13 +33,13 @@ export const VkPropFieldID = ({ id }: TVKid): JSX.Element => {
             </div>
          </div>
       </React.Fragment>
-   );
+  );
 };
 export const VkPropFieldStandard = ({
-   propertyName,
-   value,
+  propertyName,
+  value,
 }: TPropertyStructure): JSX.Element => {
-   return (
+  return (
       <React.Fragment>
          <div className="property-child-block">
             <div className="label-div">{propertyName}</div>
@@ -50,18 +49,18 @@ export const VkPropFieldStandard = ({
                ) : value === false ? (
                   <span style={{ color: 'red' }}>false</span>
                ) : (
-                  value
+                 value
                )}
             </div>
          </div>
       </React.Fragment>
-   );
+  );
 };
 export const VkPropFieldPhotoLinks = ({
-   propertyName,
-   link,
+  propertyName,
+  link,
 }: TPropertyStructure): JSX.Element => {
-   return (
+  return (
       <React.Fragment>
          <div className="property-child-block">
             <div className="label-div">{propertyName}</div>
@@ -72,5 +71,5 @@ export const VkPropFieldPhotoLinks = ({
             </div>
          </div>
       </React.Fragment>
-   );
+  );
 };

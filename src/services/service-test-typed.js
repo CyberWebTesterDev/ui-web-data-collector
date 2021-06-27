@@ -1,19 +1,27 @@
-//@flow
-
-
 export default class GetTestDataTyped {
   postList = [
-    '{"id":"1","title":"TestPost#1","text":"Some text for post","creation_date":"2020-05-10T13:49:35.594Z","change_date":"2020-05-10T13:49:35.594Z","author":"Anatoly Loskutov"}',
-    '{"id":"2","title":"TestPostDirectlyFromDbApp#2","text":"Some text for post directly","creation_date":"2020-05-10T13:50:42.580Z","change_date":"2020-05-10T13:50:42.580Z","author":"Anatoly Loskutov"}',
-    '{"id":"3","title":"100","text":"110","creation_date":"2020-05-10T15:24:09.187Z","change_date":"2020-05-10T15:24:09.187Z","author":"Anatoly Loskutov"}',
-    '{"id":"4","title":"120text","text":"110texttext","creation_date":"2020-05-10T15:25:37.602Z","change_date":"2020-05-10T15:25:37.602Z","author":"Anatoly Loskutov"}',
-    '{"id":"5","title":"220text","text":"210texttext","creation_date":"2020-05-10T15:26:50.661Z","change_date":"2020-05-10T15:26:50.661Z","author":"webscraper"}',
-    '{"id":"6","title":"rhrtrtt","text":"tntntn","creation_date":"2020-05-11T12:23:11.477Z","change_date":"2020-05-11T12:23:11.477Z","author":"webscraper"}',
-    '{"id":"7","title":"rfhbrhrhr","text":"rhrhhrhr","creation_date":"2020-05-11T12:24:35.554Z","change_date":"2020-05-11T12:24:35.554Z","author":"webscraper"}',
-    '{"id":"8","title":"Post from UI","text":"This post has been submitted from UI ","creation_date":"2020-05-11T12:25:21.447Z","change_date":"2020-05-11T12:25:21.447Z","author":"webscraper"}',
-    '{"id":"9","title":"Post from UI","text":"Второй пост из UI","creation_date":"2020-05-11T12:39:59.700Z","change_date":"2020-05-11T12:39:59.700Z","author":"webscraper"}',
-    '{"id":"10","title":"Пост из UI без заполненного текста","text":" ","creation_date":"2020-05-13T19:02:01.081Z","change_date":"2020-05-13T19:02:01.081Z","author":"webscraper"}',
-    '{"id":"11","title":"Пост из UI без заполненного текста (2)","text":" ","creation_date":"2020-05-13T19:02:47.749Z","change_date":"2020-05-13T19:02:47.749Z","author":"webscraper"}',
+    '{"id":"1","title":"TestPost#1","text":"Some text for' +
+    ' post","creation_date":"2020-05-10T13:49:35.594Z","change_date":"2020-05-10T13:49:35.594Z","author":"Anatoly Loskutov"}',
+    '{"id":"2","title":"TestPostDirectlyFromDbApp#2","text":"Some text for post' +
+    ' directly","creation_date":"2020-05-10T13:50:42.580Z","change_date":"2020-05-10T13:50:42.580Z","author":"Anatoly Loskutov"}',
+    '{"id":"3","title":"100","text":"110","creation_date":"2020-05-10T15:24:09.187Z",' +
+    '"change_date":"2020-05-10T15:24:09.187Z","author":"Anatoly Loskutov"}',
+    '{"id":"4","title":"120text","text":"110texttext","creation_date":"2020-05-10T15:25:37.602Z",' +
+    ' "change_date":"2020-05-10T15:25:37.602Z","author":"Anatoly Loskutov"}',
+    '{"id":"5","title":"220text","text":"210texttext","creation_date":"2020-05-10T15:26:50.661Z",' +
+    ' "change_date":"2020-05-10T15:26:50.661Z","author":"webscraper"}',
+    '{"id":"6","title":"rhrtrtt","text":"tntntn","creation_date":"2020-05-11T12:23:11.477Z",' +
+    ' "change_date":"2020-05-11T12:23:11.477Z","author":"webscraper"}',
+    '{"id":"7","title":"rfhbrhrhr","text":"rhrhhrhr","creation_date":"2020-05-11T12:24:35.554Z",' +
+    ' "change_date":"2020-05-11T12:24:35.554Z","author":"webscraper"}',
+    '{"id":"8","title":"Post from UI","text":"This post has been submitted from UI ","creation_date":' +
+    ' "2020-05-11T12:25:21.447Z","change_date":"2020-05-11T12:25:21.447Z","author":"webscraper"}',
+    '{"id":"9","title":"Post from UI","text":"Второй пост из UI","creation_date":"2020-05-11T12:39:59.700Z",' +
+    ' "change_date":"2020-05-11T12:39:59.700Z","author":"webscraper"}',
+    '{"id":"10","title":"Пост из UI без заполненного текста","text":" ","creation_date":"2020-05-13T19:02:01.081Z",' +
+    ' "change_date":"2020-05-13T19:02:01.081Z","author":"webscraper"}',
+    '{"id":"11","title":"Пост из UI без заполненного текста (2)","text":"' +
+    '","creation_date":"2020-05-13T19:02:47.749Z", "change_date":"2020-05-13T19:02:47.749Z","author":"webscraper"}',
   ];
 
   targetList = [];
@@ -28,15 +36,15 @@ export default class GetTestDataTyped {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (Math.random() > 0.8) {
-          reject(new Error("Thrown Error from waitTimeoutErr"));
-        } else resolve();
+          reject(new Error('Thrown Error from waitTimeoutErr'));
+        } else {resolve();}
       }, ms);
     });
   };
 
   waitTimeoutErr = async (ms) => {
     setTimeout(() => {
-      throw new Error("Error from waitTimeoutErr2");
+      throw new Error('Error from waitTimeoutErr2');
     }, ms);
   };
 
@@ -47,7 +55,7 @@ export default class GetTestDataTyped {
   };
 
   idGenerator = () => {
-    const letters = ["a", "k", "q", "dh", "er", "fi", "g"];
+    const letters = ['a', 'k', 'q', 'dh', 'er', 'fi', 'g'];
     const ax = Math.floor(Math.random() * 7);
     const bx = Math.floor(Math.random() * 7);
     const cx = Math.floor(Math.random() * 7);
@@ -151,24 +159,24 @@ export default class GetTestDataTyped {
       return id;
     }
 
-    return "null";
+    return 'null';
   };
 
   getTestProfileData = () => {
     return {
       id: 1212234,
-      first_name: "Anna",
+      first_name: 'Anna',
       is_closed: false,
       can_access_closed: true,
       sex: 1,
       followers_count: 150,
       is_single: false,
-      photo_ava_url: `test`,
-      city: { id: 1, title: "Москва" },
-      about: ["something", "something2"],
+      photo_ava_url: 'test',
+      city: { id: 1, title: 'Москва' },
+      about: ['something', 'something2'],
       props: [
-        { prop: "kindness", value: 7 },
-        { prop: "beauty", value: 5 },
+        { prop: 'kindness', value: 7 },
+        { prop: 'beauty', value: 5 },
       ],
     };
   };
@@ -177,7 +185,7 @@ export default class GetTestDataTyped {
 
   searchTestPosts = async () => {
     console.log(
-      `GetTestData: the async function searchTestPosts has been called`
+      'GetTestData: the async function searchTestPosts has been called',
     );
     await this.waitTimeout(3000);
     this.jsonParseArray(this.postList);

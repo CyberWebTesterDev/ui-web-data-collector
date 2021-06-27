@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import vkDataMapper from "../../services/helper";
-import GetTestData from "../../services/service-test";
-import GetDataFromWeb from "../../services/service";
+import React, { useState, useEffect } from 'react';
+import vkDataMapper from '../../services/helper';
+import GetTestData from '../../services/service-test';
+import GetDataFromWeb from '../../services/service';
 
 const ProfileDetails = (id) => {
   const GTD = new GetTestData();
@@ -16,26 +16,26 @@ const ProfileDetails = (id) => {
       setLoading(false);
       setProfile(profile);
     });
-  });
+  }, [loading]);
   let Objkeysval = [];
 
   for (let key in profile) {
-    if (key === "last_seen.time") {
+    if (key === 'last_seen.time') {
       const dateSeen = new Date(profile[key] * 1000)
         .toISOString()
-        .replace("T", " ")
-        .replace("Z", " ");
+        .replace('T', ' ')
+        .replace('Z', ' ');
 
       Objkeysval.push(
         <span key={GTD.idGenerator()}>
           <font>{key}: </font> {dateSeen}
-        </span>
+        </span>,
       );
     } else {
       Objkeysval.push(
         <span key={GTD.idGenerator()}>
           <font>{key}: </font> {profile[key].toString()}
-        </span>
+        </span>,
       );
     }
   }

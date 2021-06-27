@@ -5,28 +5,28 @@ import { createSelector } from 'reselect';
 import { ModalLargePost } from './modal';
 
 export class ModalsController extends React.Component {
-   getModalState = () => store.getState().modal;
-   updateState = () => {
-      store.subscribe(() => {
-         this.setState({
-            ...this.getModalState(),
-         });
+  getModalState = () => store.getState().modal;
+  updateState = () => {
+    store.subscribe(() => {
+      this.setState({
+        ...this.getModalState(),
       });
-   };
-   state = {
-      ...this.updateState(),
-   };
+    });
+  };
+  state = {
+    ...this.updateState(),
+  };
 
-   componentDidMount() {
-      console.log(`ModalsController mounted current state: ` + '\n');
-      console.log(this.state);
-      console.log(`Modal state from store: ` + '\n');
-      console.log(store.getState().modal);
-   }
+  componentDidMount() {
+    console.log('ModalsController mounted current state: ' + '\n');
+    console.log(this.state);
+    console.log('Modal state from store: ' + '\n');
+    console.log(store.getState().modal);
+  }
 
-   render() {
-      return this.state.visible && this.state.isForPost ? (
+  render() {
+    return this.state.visible && this.state.isForPost ? (
          <ModalLargePost post={this.state.post} />
-      ) : false;
-   }
+    ) : false;
+  }
 }

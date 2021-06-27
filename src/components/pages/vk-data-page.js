@@ -1,23 +1,23 @@
-import React from "react";
-import { connect } from "react-redux";
+import React from 'react';
+import { connect } from 'react-redux';
 import {
   vkProfileDataRequseted,
   vkProfileDataLoaded,
   vkMatchProfilesLoaded,
   vkSearchMatchProps,
-} from "../../actions/actions";
-import withGetDataFromWeb from "../hoc/with-getdata-from-web";
-import Spinner from "../spinner/spinner";
-import ProfileInfo from "../data-list/vk-profile-info";
-import ProfileMatches from "../data-detail/profile-matches";
-import { counterNotNull } from "../../services/helper";
-import GetInfobyId from "../forms/vk-form-get-by-id";
-import GetMatches from "../forms/vk-form-get-matches";
-import GetMatchesByQuery from "../forms/vk-search-matches";
+} from '../../actions/actions';
+import withGetDataFromWeb from '../hoc/with-getdata-from-web';
+import Spinner from '../spinner/spinner';
+import ProfileInfo from '../data-list/vk-profile-info';
+import ProfileMatches from '../data-detail/profile-matches';
+import { counterNotNull } from '../../services/helper';
+import GetInfobyId from '../forms/vk-form-get-by-id';
+import GetMatches from '../forms/vk-form-get-matches';
+import GetMatchesByQuery from '../forms/vk-search-matches';
 
 class VKdataPage extends React.Component {
   componentDidMount() {
-    console.log("componentDidMount");
+    console.log('componentDidMount');
     console.log(Object.keys(this.props.profiledata).length);
   }
 
@@ -53,9 +53,9 @@ class VKdataPage extends React.Component {
 
   onClickListenerGetById = (e) => {
     e.preventDefault();
-    let profileId = document.getElementById("vkid").value;
-    if (profileId === "" || profileId === null || isNaN(profileId)) {
-      alert("Введите ID. Должен содержать цифры");
+    let profileId = document.getElementById('vkid').value;
+    if (profileId === '' || profileId === null || isNaN(profileId)) {
+      alert('Введите ID. Должен содержать цифры');
       return;
     }
     this.getInfobyId(profileId).then((data) => {
@@ -66,11 +66,11 @@ class VKdataPage extends React.Component {
 
   onClickListenerGetMatches = (e) => {
     e.preventDefault();
-    let startId = document.getElementById("startvkid").value;
-    let quantity = document.getElementById("quan").value;
+    let startId = document.getElementById('startvkid').value;
+    let quantity = document.getElementById('quan').value;
 
     if (!startId || isNaN(startId) || !quantity || isNaN(quantity)) {
-      alert("Введите ID. Должен содержать цифры");
+      alert('Введите ID. Должен содержать цифры');
       return;
     }
     this.getMatches(startId, quantity).then((data) => {
@@ -80,18 +80,18 @@ class VKdataPage extends React.Component {
 
   onClickListenerGetMatchesWS = (e) => {
     e.preventDefault();
-    let startId = document.getElementById("startvkid").value;
-    let quantity = document.getElementById("quan").value;
+    let startId = document.getElementById('startvkid').value;
+    let quantity = document.getElementById('quan').value;
 
     if (
-      startId === "" ||
+      startId === '' ||
       startId === null ||
       isNaN(startId) ||
-      quantity === "" ||
+      quantity === '' ||
       quantity === null ||
       isNaN(quantity)
     ) {
-      alert("Введите ID. Должен содержать цифры");
+      alert('Введите ID. Должен содержать цифры');
       return;
     }
     this.getMatchesWS(startId, quantity).then((data) => {
@@ -141,8 +141,8 @@ class VKdataPage extends React.Component {
           />
           <div className="vk-page-text">Данные из VK</div>
           <div className="profile-info-block">
-            Диапазон поиска от {searchMatchProps.startId} до{" "}
-            {searchMatchProps.endId} Найдено подходящих:{" "}
+            Диапазон поиска от {searchMatchProps.startId} до{' '}
+            {searchMatchProps.endId} Найдено подходящих:{' '}
             {counterNotNull(matchedprofiles)}
           </div>
         </div>
@@ -179,5 +179,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withGetDataFromWeb(
-  connect(mapStateToProps, mapDispatchToProps)(VKdataPage)
+  connect(mapStateToProps, mapDispatchToProps)(VKdataPage),
 );

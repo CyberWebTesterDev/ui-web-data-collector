@@ -1,27 +1,27 @@
 import React from 'react';
 
 export const RenderForm = ({
-   onChangeListener,
-   searchString,
-   quantity,
-   pickedYear,
-   pickedAgeFrom,
-   pickedAgeTo,
-   isButtonDisabled,
-   btnAdditionalClass,
-   isLabelErrorTextHidden,
-   labelErrorText,
-   isOffsetValid,
-   isPickedYearValid,
-   isPickedAgeFromValid,
-   isPickedAgeToValid,
-   onClickListener,
+  onChangeListener,
+  searchString,
+  quantity,
+  pickedYear,
+  pickedAgeFrom,
+  pickedAgeTo,
+  isButtonDisabled,
+  btnAdditionalClass,
+  isLabelErrorTextHidden,
+  labelErrorText,
+  isOffsetValid,
+  isPickedYearValid,
+  isPickedAgeFromValid,
+  isPickedAgeToValid,
+  onClickListener,
 }) => {
-   let daysSelectOption = [];
-   for (let i = 1; i <= 31; i++) {
-      daysSelectOption.push(<option value={`${i}`}> {i} </option>);
-   }
-   return (
+  let daysSelectOption = [];
+  for (let i = 1; i <= 31; i++) {
+    daysSelectOption.push(<option value={`${i}`}> {i} </option>);
+  }
+  return (
       <div id="divMatchesByQuery" className="search-matches-container">
          <span> Строка поиска (опционально):</span>
          <input
@@ -39,7 +39,7 @@ export const RenderForm = ({
          />
          <span>Offset (по умолчанию 0)</span>
          <input
-            className={!isOffsetValid ? `red-border` : ''}
+            className={!isOffsetValid ? 'red-border' : ''}
             onChange={onChangeListener}
             type="text"
             id="offset"
@@ -50,7 +50,7 @@ export const RenderForm = ({
             id="pickedAgeFrom"
             onChange={onChangeListener}
             value={pickedAgeFrom}
-            className={!isPickedAgeFromValid ? `red-border` : ''}
+            className={!isPickedAgeFromValid ? 'red-border' : ''}
          />
          <span>Возраст до (по умолчанию 36)</span>
          <input
@@ -58,7 +58,7 @@ export const RenderForm = ({
             id="pickedAgeTo"
             onChange={onChangeListener}
             value={pickedAgeTo}
-            className={!isPickedAgeToValid ? `red-border` : ''}
+            className={!isPickedAgeToValid ? 'red-border' : ''}
          />
          <label htmlFor="pickedCity">Выберите город: </label>
          <select onChange={onChangeListener} id="pickedCity">
@@ -102,7 +102,7 @@ export const RenderForm = ({
             id="pickedYear"
             onChange={onChangeListener}
             value={pickedYear}
-            className={!isPickedYearValid ? `red-border` : ''}
+            className={!isPickedYearValid ? 'red-border' : ''}
          >
             <option value="0">Не выбрано</option>
             <option value="1980">1980</option>
@@ -144,5 +144,5 @@ export const RenderForm = ({
             Подобрать подходящих
          </button>
       </div>
-   );
+  );
 };

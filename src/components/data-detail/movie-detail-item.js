@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const MovieDetailItem = ({ movie }) => {
   const {
@@ -38,7 +38,7 @@ const MovieDetailItem = ({ movie }) => {
       </span>
       <span>
         <font>Main actors:</font>
-        {movie.mainActors[0]}, {movie.mainActors[1]}, {movie.mainActors[2]},{" "}
+        {movie.mainActors[0]}, {movie.mainActors[1]}, {movie.mainActors[2]},{' '}
         {movie.mainActors[3]}, {movie.mainActors[4]}
       </span>
       <span>

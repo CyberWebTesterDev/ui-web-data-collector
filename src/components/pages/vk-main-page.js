@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const VkMainPage = () => {
-   return (
+  return (
       <div className="menu-container">
          <Link to="/vkdata/profile-enrichment">
             <nav className="navbar navbar-light bg-light">
@@ -25,6 +25,6 @@ const VkMainPage = () => {
             </nav>
          </Link>
       </div>
-   );
+  );
 };
 export default VkMainPage;
