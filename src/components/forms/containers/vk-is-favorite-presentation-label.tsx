@@ -1,14 +1,12 @@
 import * as React from 'react';
 
 type TIsFavorite = {
-   isFavorite: boolean;
+  isFavorite: boolean;
 };
 export const FavoriteMarlPresentationLabel = ({
-   isFavorite,
-}: TIsFavorite): React.FunctionComponent<TIsFavorite> | boolean => {
-   return isFavorite ? (
+  isFavorite,
+}: TIsFavorite): JSX.Element | boolean => {
+  return isFavorite ? (
       <div className="label-favorite-mark">В избранном &#10003;</div>
-   ) : (
-      false
-   );
+  ) : false;
 };

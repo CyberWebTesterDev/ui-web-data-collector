@@ -4,6 +4,7 @@ import {
   keysProfileToExcludeInTable,
 } from '../../helpers/column-names-mapper';
 import { omit, values } from 'lodash';
+import { TVKProfile } from '../vk/vk-types';
 
 type TData = {
   data: [];
@@ -26,7 +27,7 @@ export const TableAssembler = ({ data }: TData): boolean | JSX.Element => {
       </table>
   );
 };
-const TableHeadSimple = ({ item }) => {
+const TableHeadSimple: React.FC<{item: TVKProfile | null;}> = ({ item }) => {
   let mappedKeys = [];
   if (item) {
     for (let key in omit(item, keysProfileToExcludeInTable)) {
@@ -35,7 +36,7 @@ const TableHeadSimple = ({ item }) => {
   }
   return (
       <thead>
-         <tr key={item.id}>
+         <tr key={item?.id}>
             {' '}
             {mappedKeys.map((key) => (
                <th>{key}</th>
@@ -44,23 +45,27 @@ const TableHeadSimple = ({ item }) => {
       </thead>
   );
 };
-type TTableBodySimpleProps = {
-  item: string;
-};
-const TableBodySimple = ({ data }) => {
-  let trs = data.map((item) => {
+
+const TableBodySimple: React.FC<{data: TVKProfile[] | null;}> = ({ data }): JSX.Element => {
+  let trs = data?.map((item) => {
     if (item) {
+      // @ts-ignore
       return (
             <tr>
+              {/*// @ts-ignore*/}
                <TdSimple item={item} />
             </tr>
       );
     }
+    return <tr></tr>;
   });
   return <tbody>{trs}</tbody>;
 };
-const TdSimple = ({ item }) => {
+// @ts-ignore
+const TdSimple: React.FC<{ item: TVKProfile; }> = ({ item }): JSX.Element[] => {
   return values(omit(item, keysProfileToExcludeInTable)).map((value) => (
-      <td>{value}</td>
+     <>
+       <td>{value}</td>
+     </>
   ));
 };

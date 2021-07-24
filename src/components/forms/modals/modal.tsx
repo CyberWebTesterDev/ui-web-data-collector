@@ -10,7 +10,7 @@ export const ModalLargePost = ({ post }: TPost) => {
       closeModalDispatch();
       cancelSelectPostDispatch(post.id);
     },
-    [post.id],
+    [post],
   );
 
   return (

@@ -9,6 +9,29 @@ export enum EColumnNamesMatchProfilesMap {
   has_child = 'Ребенок',
 };
 
+type TcolumnNamesMatchProfilesMap = {
+  [key: string]: string;
+  id: 'id';
+  first_name: 'Имя';
+  last_name: 'Фамилия';
+  bdate: 'День рождения';
+  birth_date: 'День рождения';
+  estimation: 'Оценка';
+  is_in_relationship: 'Отношения';
+  has_child: 'Ребенок';
+}
+
+export const columnNamesMatchProfilesMap: TcolumnNamesMatchProfilesMap = {
+  id: 'id',
+  first_name: 'Имя',
+  last_name: 'Фамилия',
+  bdate: 'День рождения',
+  birth_date: 'День рождения',
+  estimation: 'Оценка',
+  is_in_relationship: 'Отношения',
+  has_child: 'Ребенок',
+};
+
 export const keysProfileToExcludeInTable = [
   'city',
   'counters',

@@ -22,7 +22,7 @@ interface IChildElement {
   parentClassName: string;
   elementName: string;
   modifiers: string[];
-  blockName: string;
+  blockName?: string;
 }
 
 // TO DO
@@ -76,7 +76,7 @@ export const ChildElement = ({
   return <div className={className}></div>;
 };
 export const getBEMClassName = ({
-  blockName,
+  blockName = '',
   elementName = '',
   modifiers = [],
 }: IChildElement): string => {

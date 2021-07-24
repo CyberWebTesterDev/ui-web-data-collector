@@ -1,10 +1,10 @@
-import { checkProfileInDB, getInfobyId } from "../../helpers/vk-service";
+import { checkProfileInDB, getInfobyId } from '../../helpers/vk-service';
 import {
   fetchVKENProfileDataEndFailure,
   fetchVKENProfileDataEndSuccess,
   getVKENDBProfileDataEndSuccess,
-} from "../../forms/profile-enrichment/actions/profile-enrichment-actions";
-import { hideSpinner, showSpinner } from "../../../actions/actions";
+} from '../../forms/profile-enrichment/actions/profile-enrichment-actions';
+import { hideSpinner, showSpinner } from '../../../actions/actions';
 
 type TAction = {
   type: string;
@@ -15,13 +15,14 @@ type TAction = {
 // затем осуществляет вызов асинхронных функций, после получения результата
 // передает action дальше в редьюсер
 export const getVKProfileById = () => (dispatch: (action: TAction) => void) => (
-  action: TAction
+  action: TAction,
 ) => {
-  if (action.type == "FETCH_VK_EN_PROFILE_DATA") {
-    dispatch(showSpinner("Получение данных о профайле"));
+  if (action.type == 'FETCH_VK_EN_PROFILE_DATA') {
+    dispatch(showSpinner('Получение данных о профайле'));
     return getInfobyId(action.payload)
       .then((profile) => {
         dispatch(hideSpinner());
+        // @ts-ignore
         return dispatch(fetchVKENProfileDataEndSuccess(profile));
       })
       .catch((e) => {
@@ -29,11 +30,12 @@ export const getVKProfileById = () => (dispatch: (action: TAction) => void) => (
         throw new Error(e);
       });
   }
-  if (action.type == "GET_VK_EN_DB_PROFILE_DATA") {
-    dispatch(showSpinner("Получение данных о профайле из БД"));
+  if (action.type == 'GET_VK_EN_DB_PROFILE_DATA') {
+    dispatch(showSpinner('Получение данных о профайле из БД'));
     return checkProfileInDB(action.payload)
       .then((data) => {
         dispatch(hideSpinner());
+        // @ts-ignore
         return dispatch(getVKENDBProfileDataEndSuccess(data));
       })
       .catch((e) => {

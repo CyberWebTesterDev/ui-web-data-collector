@@ -143,6 +143,7 @@ const DivDividerMemoized = React.memo<TDivDividerProps>(
   },
 );
 
+// @ts-ignore
 const DropDownWithSpecificOptions = () => {
   const optionsInner = [
     { key: 1, text: 'Да', value: true },
@@ -169,12 +170,12 @@ const NoDataLabelCell = ({
   );
 };
 
-const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
+const TableCellBooleanFn = ({ flag }: { flag: boolean; }): JSX.Element => {
   const TableCallBoolean = () => {
     return flag ? (
-         <Icon name="checkmark" size="big" color={'green'}></Icon>
-    ) : flag === false ? (
-         <Icon name="cancel" size="big" color={'red'}></Icon>
+         <Icon name="checkmark" size="big" color={'green'}/>
+    ) : !flag ? (
+         <Icon name="cancel" size="big" color={'red'}/>
     ) : (
          <NoDataLabelCell parentName={'VKInformationPanel'} />
     );
@@ -182,4 +183,4 @@ const TableCellBooleanFn = ({ flag }: { flag: boolean }): JSX.Element => {
   return <TableCallBoolean />;
 };
 
-const TableCellBoolean = React.memo<{ flag: boolean }>(TableCellBooleanFn);
+const TableCellBoolean = React.memo<{ flag: boolean; }>(TableCellBooleanFn);
