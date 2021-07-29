@@ -7,7 +7,7 @@ import { omit, values } from 'lodash';
 import { TVKProfile } from '../vk/vk-types';
 
 type TData = {
-  data: [];
+  data: TVKProfile[];
 };
 export const TableAssembler = ({ data }: TData): boolean | JSX.Element => {
   if (data.length < 1) {

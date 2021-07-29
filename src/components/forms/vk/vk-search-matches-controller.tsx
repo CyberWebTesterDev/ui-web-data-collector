@@ -7,11 +7,14 @@ import {
   getVKRenderData,
   getVKSearchFormData,
 } from './vk-selectors';
+import { VkSearchForm } from './vk-search-form';
 
 const VKSearchMatchedProfilesController = React.memo<TSearchVKProfileMatchesProps & DispatchProp>(
   (props) => {
     return (
-        <div><h2>{props.searchForm.searchString}</h2></div>
+        <div><h2>{props.searchForm.searchString}</h2>
+          <VkSearchForm />
+        </div>
     );
   },
 );

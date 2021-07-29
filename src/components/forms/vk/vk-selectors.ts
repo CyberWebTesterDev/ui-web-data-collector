@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { counterNotNull } from '../../../services/helper';
+import { countNonNullElementsInArray } from '../../../services/helper';
 import { TVKState, TVKProfile } from './vk-types';
 import { TState } from '../../../lib/ui-serv-main-lib';
 
@@ -22,5 +22,5 @@ export const getVKMatchedProfiles = createSelector(
 
 export const getNotNullLengthMatchesSelector = createSelector(
   getVKMatchedProfiles,
-  (matches: TVKProfile[] | null[]): number => counterNotNull(matches),
+  (matches: Array<TVKProfile | null>): number => countNonNullElementsInArray(matches),
 );

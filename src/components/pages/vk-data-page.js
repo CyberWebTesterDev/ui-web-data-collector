@@ -10,7 +10,7 @@ import withGetDataFromWeb from '../hoc/with-getdata-from-web';
 import Spinner from '../spinner/spinner';
 import ProfileInfo from '../data-list/vk-profile-info';
 import ProfileMatches from '../data-detail/profile-matches';
-import { counterNotNull } from '../../services/helper';
+import { countNonNullElementsInArray } from '../../services/helper';
 import GetInfobyId from '../forms/vk-form-get-by-id';
 import GetMatches from '../forms/vk-form-get-matches';
 import GetMatchesByQuery from '../forms/vk-search-matches';
@@ -143,7 +143,7 @@ class VKdataPage extends React.Component {
           <div className="profile-info-block">
             Диапазон поиска от {searchMatchProps.startId} до{' '}
             {searchMatchProps.endId} Найдено подходящих:{' '}
-            {counterNotNull(matchedprofiles)}
+            {countNonNullElementsInArray(matchedprofiles)}
           </div>
         </div>
       );

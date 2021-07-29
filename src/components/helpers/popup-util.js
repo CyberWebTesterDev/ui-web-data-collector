@@ -47,7 +47,7 @@ const PopupFlexConfProd = (props) => {
          </div>
     );
   }
-  return false;
+  return null;
 };
 export const PopupCenterLarge = ({
   className = '',

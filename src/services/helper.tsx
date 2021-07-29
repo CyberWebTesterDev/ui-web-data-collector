@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import * as React from 'react';
 import GetDataFromWeb from '../services/service';
 import * as mc from '../components/helpers/main-constants';
 import { showPopup, PopupFlexConfProd } from '../components/helpers/popup-util';
 import { isEmpty } from 'lodash';
+import { TVKProfile } from '../components/forms/vk/vk-types';
 
 export function callerName() {
   try {
@@ -16,27 +17,31 @@ export function callerName() {
   }
 }
 
-export const getIndexInArrayOfObjectsById = (id, array) => {
+export const getIndexInArrayOfObjectsById = (id: string, array: Record<string, any>[]): number => {
   if (array.length > 0) {
-    return array.ForEach((el, idx) => {
+    return array.findIndex((el, idx) => {
+      let foundIndex = 0;
       for (let key in el) {
         if (key === 'id') {
           if (el[key] === id) {
-            return idx;
+            foundIndex = idx;
           }
         }
       }
+      return Boolean(foundIndex);
     });
   }
+  return -1;
 };
 
-export const intersectIdChecker = (sourceArray, targetArray) => {
+export const intersectIdChecker = (sourceArray: TVKProfile[], targetArray: Record<string, any>[]) => {
   sourceArray.forEach((el, idx) => {
     if (el) {
       //console.log(`intersectIdChecker: checking for intersection ${el.id}(${typeof (el.id).toString()})`);
 
       let findIdx = targetArray.findIndex((element) => {
-        //console.log(`intersectIdChecker: comparing ${el.id}(${typeof (el.id).toString()}) with ${element.vk_id}(${typeof element.vk_id})`);
+        //console.log(`intersectIdChecker: comparing
+        // ${el.id}(${typeof (el.id).toString()}) with ${element.vk_id}(${typeof element.vk_id})`);
         return element.vk_id === el.id.toString();
       });
       if (findIdx !== -1) {
@@ -57,7 +62,7 @@ export const intersectIdChecker = (sourceArray, targetArray) => {
   });
 };
 
-export const getIndexInArrayOfObjectsById2 = (id, array) => {
+export const getIndexInArrayOfObjectsById2 = (id: string, array: Record<string, string | {}>[]): number | boolean => {
   if (id) {
     if (array.length > 0) {
       return array.findIndex((object) => object.id === id);
@@ -66,15 +71,15 @@ export const getIndexInArrayOfObjectsById2 = (id, array) => {
   return false;
 };
 
-export const dateParser = (dateString) => {
-  if (dateString && typeof dateString === 'string') {
+export const dateParser = (dateString: string): string => {
+  if (dateString) {
     return dateString.replace('T', ' ').replace('Z', '');
   } else {
     throw new Error('The passed parameter is empty or has not string type');
   }
 };
 
-const counterNotNull = (arr) => {
+const countNonNullElementsInArray = (arr: any[]): number => {
   if (isEmpty(arr)) {return 0;}
   let count = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -85,7 +90,9 @@ const counterNotNull = (arr) => {
   return count;
 };
 
-export const nullArrayIndicator = (checkData) => {
+type TnullArrayIndicator = (param: any[]) => boolean;
+
+export const nullArrayIndicator: TnullArrayIndicator = (checkData) => {
   if (Array.isArray(checkData)) {
     if (checkData.length == 0) {
       return true;
@@ -99,7 +106,7 @@ export const nullArrayIndicator = (checkData) => {
   }
 };
 
-export const convertDateFromTimestamp = (ts) => {
+export const convertDateFromTimestamp = (ts: number) => {
   if (ts) {
     return new Date(ts * 1000)
       .toISOString()
@@ -109,7 +116,7 @@ export const convertDateFromTimestamp = (ts) => {
   return;
 };
 
-const vkDataMapper = (value, prop) => {
+const vkDataMapper = (value: number, prop: string) => {
   if (prop === 'relation') {
     switch (value) {
       case 1:
@@ -145,9 +152,11 @@ const vkDataMapper = (value, prop) => {
         return 'unknown value';
     }
   }
+
+  return 'unknown value';
 };
 
-export const RatingRings = (onClickListener) => {
+export const RatingRings = () => {
   return (
       <React.Fragment>
          <span id="10">o</span>
@@ -160,6 +169,7 @@ export const RatingRings = (onClickListener) => {
          <span id="3">o</span>
          <span id="2">o</span>
          <span
+            // @ts-ignore
             onClick={(e) => console.log(`span with id ${e.target.id}`)}
             id="1"
          >
@@ -169,7 +179,8 @@ export const RatingRings = (onClickListener) => {
   );
 };
 
-export const RatingRingsTest = (onClickListener) => {
+export const RatingRingsTest = () => {
+
   return (
       <React.Fragment>
          <span id="10">o</span>
@@ -182,6 +193,7 @@ export const RatingRingsTest = (onClickListener) => {
          <span id="3">o</span>
          <span id="2">o</span>
          <span
+            // @ts-ignore
             onClick={(e) => console.log(`span with id ${e.target.id}`)}
             id="1"
          >
@@ -191,7 +203,7 @@ export const RatingRingsTest = (onClickListener) => {
   );
 };
 
-export const SimpleRating = ({ rating }) => {
+export const SimpleRating = ({ rating }: {rating: string;}) => {
   return (
       <div className="simple-rating">
          <span>{rating}</span>
@@ -200,7 +212,7 @@ export const SimpleRating = ({ rating }) => {
   );
 };
 
-export const SimpleEstimation = ({ id }) => {
+export const SimpleEstimation = ({ id }: {id: string;}) => {
   return (
       <React.Fragment>
          <select
@@ -222,14 +234,14 @@ export const SimpleEstimation = ({ id }) => {
   );
 };
 
-export const ComplexEstimation = ({ id, rating = null }) => {
+export const ComplexEstimation = ({ id, rating }: {id: string; rating?: string;}) => {
   const gdf = new GetDataFromWeb();
 
-  const [stateRating, setStateRating] = useState(null);
-  const [popUpType, setPopUpType] = useState();
+  //const [stateRating, setStateRating] = useState(null);
+  const [popUpType, setPopUpType] = React.useState();
 
-  const estimateProfile = async (estimation, profileId) => {
-    setStateRating(estimation);
+  const estimateProfile = async (estimation: string, profileId: string) => {
+    //setStateRating(estimation);
     try {
       let res = await gdf.updateEstimationProfile(estimation, profileId);
       if (res.rowCount) {
@@ -281,14 +293,14 @@ export const ComplexEstimation = ({ id, rating = null }) => {
   );
 };
 
-export const ComplexCorrelationEstimation = ({ id, corrEst = null }) => {
+export const ComplexCorrelationEstimation = ({ id, corrEst }: Record<string, string | undefined>) => {
   const gdf = new GetDataFromWeb();
 
-  const [stateRating, setStateRating] = useState(null);
-  const [popUpType, setPopUpType] = useState();
+  //const [stateRating, setStateRating] = useState<string>('');
+  const [popUpType, setPopUpType] = React.useState<string>();
 
-  const corrEstimateProfile = async (corrEst, profileId) => {
-    setStateRating(corrEst);
+  const corrEstimateProfile = async (corrEst: string, profileId: string) => {
+    //setStateRating(corrEst);
     try {
       let res = await gdf.updateCorrelationEstimationProfile(
         corrEst,
@@ -343,4 +355,4 @@ export const ComplexCorrelationEstimation = ({ id, corrEst = null }) => {
   );
 };
 
-export { vkDataMapper, counterNotNull };
+export { vkDataMapper, countNonNullElementsInArray };

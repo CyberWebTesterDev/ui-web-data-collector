@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  counterNotNull,
+  countNonNullElementsInArray,
   intersectIdChecker,
   ComplexEstimation,
   ComplexCorrelationEstimation,
@@ -23,7 +23,7 @@ const ProfileMatches = ({
 
   const GDF = new GetDataFromWeb();
 
-  let notNullCounter = counterNotNull(matches);
+  let notNullCounter = countNonNullElementsInArray(matches);
 
   if (notNullCounter === 0) {
     return (

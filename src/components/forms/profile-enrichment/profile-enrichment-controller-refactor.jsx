@@ -9,7 +9,7 @@ import { VkProfileBlockPresentationCompareContainer } from '../styled-forms/vk-f
 import { VKInformationPanel } from './VKInformationPanel';
 import { VKenControlPanel } from './vk-en-control-panel';
 
-// TO DO: THIS OLD COMPONENT TO DELETE
+// TODO: THIS OLD COMPONENT TO BE DELETED
 class ProfileEnrichmentControllerRx extends Component {
   async componentDidMount() {
     console.log(

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
+import { Form } from 'semantic-ui-react';
 import GetDataFromWeb from '../../services/service';
 import ProfileMatches from '../data-detail/profile-matches';
 import { callerName } from '../../services/helper';
@@ -425,7 +426,7 @@ const GetMatchesByQuery = ({ caller }) => {
   return (
       <React.Fragment>
          <RenderForm />
-         <div className="profile-info-block"></div>
+        <div className="profile-info-block"></div>
       </React.Fragment>
   );
 };

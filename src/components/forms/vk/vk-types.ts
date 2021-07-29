@@ -6,6 +6,13 @@ export type TVKProfile = {
   can_access_closed: boolean;
   sex: number;
   bdate: string;
+  is_checked: boolean;
+  first_checked: boolean;
+  check_update: string;
+  estimation: string;
+  has_child: boolean;
+  is_in_relationship: boolean;
+  correlation_est: string;
   city: {
     id: number;
     title: string;
